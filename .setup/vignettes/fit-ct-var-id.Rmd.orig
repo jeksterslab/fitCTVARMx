@@ -367,7 +367,7 @@ theta_l
 library(simStateSpace)
 sim <- SimSSMOUIVary(
   n = 5,
-  time = length(seq(from = 0, to = 20, by = delta_t)),
+  time = length(seq(from = 0, to = 50, by = delta_t)),
   delta_t = delta_t,
   mu0 = mu0,
   sigma0_l = sigma0_l,
