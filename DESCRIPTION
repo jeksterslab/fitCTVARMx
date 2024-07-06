@@ -8,21 +8,19 @@ Authors@R:
            email = "r.jeksterslab@gmail.com",
            comment = c(ORCID = "0000-0003-4818-8420"))
 Description: Fit the continuous-time vector autoregressive model using the 'OpenMx' package.
-URL: https://github.com/jeksterslab/fitCTVARMx, https://jeksterslab.github.io/fitCTVARMx/
+URL: https://github.com/jeksterslab/fitCTVARMx,
+        https://jeksterslab.github.io/fitCTVARMx/
 BugReports: https://github.com/jeksterslab/fitCTVARMx/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
-Depends:
-    R (>= 3.0.0),
-    OpenMx
-Imports:
-    stats
-Suggests:
-    knitr,
-    rmarkdown,
-    testthat,
-    simStateSpace
+Depends: R (>= 3.0.0), OpenMx
+Imports: stats
+Suggests: knitr, rmarkdown, testthat, simStateSpace
 RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2024-07-06 00:27:34 UTC; root
+Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph]
+    (<https://orcid.org/0000-0003-4818-8420>)
+Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
