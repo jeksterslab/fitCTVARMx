@@ -13,6 +13,9 @@
     <loc>https://github.com/jeksterslab/fitCTVARMx/articles/fit-ct-var-id.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/articles/fit-ct-var.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/fitCTVARMx/articles/fitCTVARMx.html</loc>
   </url>
   <url>
@@ -34,7 +37,13 @@
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/FitCTVARIDMx.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/reference/FitCTVARMx.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/coef.fitctvaridmx.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/reference/coef.fitctvarmx.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/fitCTVARMx-package.html</loc>
@@ -46,9 +55,18 @@
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/print.fitctvaridmx.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/reference/print.fitctvarmx.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/summary.fitctvaridmx.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/reference/summary.fitctvarmx.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/fitCTVARMx/reference/vcov.fitctvaridmx.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/fitCTVARMx/reference/vcov.fitctvarmx.html</loc>
   </url>
 </urlset>
