@@ -124,7 +124,7 @@ Ignored if \code{sigma0_fixed = TRUE}.}
 Ignored if \code{sigma0_fixed = TRUE}.}
 
 \item{try}{Positive integer.
-Number of extra tries for \code{\link[OpenMx:mxTryHard]{OpenMx::mxTryHard()}}.}
+Number of extra optimization tries.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.}
