@@ -68,7 +68,7 @@
 #' @param sigma0_ubound Optional upper bound for `sigma0`.
 #'   Ignored if `sigma0_fixed = TRUE`.
 #' @param try Positive integer.
-#'   Number of extra tries for [OpenMx::mxTryHard()].
+#'   Number of extra optimization tries.
 #' @param ncores Positive integer.
 #'   Number of cores to use.
 #'
