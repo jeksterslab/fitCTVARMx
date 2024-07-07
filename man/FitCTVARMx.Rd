@@ -142,6 +142,42 @@ a list with the following elements:
 \description{
 Fit the First-Order Continuous-Time Vector Autoregressive Model
 }
+\examples{
+\dontrun{
+# Generate data using the simStateSpace package------------------------------
+set.seed(42)
+sim <- simStateSpace::SimSSMVARIVary(
+  n = 5,
+  time = 100,
+  mu0 = list(rep(x = 0, times = 3)),
+  sigma0_l = list(t(chol(diag(3)))),
+  mu = list(rep(x = 0, times = 3)),
+  phi = matrix(
+    data = c(
+      -0.357, 0.771, -0.450,
+      0.0, -0.511, 0.729,
+      0, 0, -0.693
+    ),
+    nrow = 3
+  ),
+  sigma_l = list(t(chol(diag(3))))
+)
+data <- as.data.frame(sim)
+
+# Fit the model--------------------------------------------------------------
+library(fitCTVARMx)
+fit <- FitCTVARMx(
+  data = data,
+  observed = c("y1", "y2", "y3"),
+  id = "id"
+)
+print(fit)
+summary(fit)
+coef(fit)
+vcov(fit)
+}
+
+}
 \seealso{
 Other CTVAR Functions: 
 \code{\link{FitCTVARIDMx}()}
