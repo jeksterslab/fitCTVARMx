@@ -6,6 +6,7 @@
   # R0
   # initial condition
   # covariance
+  # nocov start
   if (is.null(sigma0_start)) {
     sigma0_start <- rep(
       x = 1,
@@ -69,4 +70,5 @@
       name = "sigma0"
     )
   )
+  # nocov end
 }

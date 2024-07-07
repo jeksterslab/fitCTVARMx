@@ -5,6 +5,7 @@
   # R0
   # initial condition
   # covariance
+  # nocov start
   if (sigma0_diag) {
     return(
       .FitCTVARSigma0FixedDiag(
@@ -20,4 +21,5 @@
       )
     )
   }
+  # nocov end
 }

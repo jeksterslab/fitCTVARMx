@@ -7,6 +7,7 @@
   # x0
   # initial condition
   # mean
+  # nocov start
   if (mu0_fixed) {
     return(
       .FitCTVARMu0Fixed(
@@ -15,7 +16,6 @@
       )
     )
   } else {
-    # nocov start
     return(
       .FitCTVARMu0Vec(
         k = k,
@@ -25,6 +25,6 @@
         mu0_ubound = mu0_ubound
       )
     )
-    # nocov end
   }
+  # nocov end
 }

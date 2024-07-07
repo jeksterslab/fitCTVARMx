@@ -4,7 +4,7 @@
 \name{fitCTVARMx-package}
 \alias{fitCTVARMx}
 \alias{fitCTVARMx-package}
-\title{fitCTVARMx: Fit The Continuous-Time Vector Autoregressive Model}
+\title{fitCTVARMx: Fit the Continuous-Time Vector Autoregressive Model}
 \description{
 Fit the continuous-time vector autoregressive model using the 'OpenMx' package.
 }

@@ -1,5 +1,5 @@
 ---
-title: "fitCTVARMx: Fit The Continuous-Time Vector Autoregressive Model"
+title: "fitCTVARMx: Fit the Continuous-Time Vector Autoregressive Model"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -9,7 +9,7 @@ nocite: |
   @Neale-Hunter-Pritikin-etal-2015
   @Hunter-2017
 vignette: >
-  %\VignetteIndexEntry{fitCTVARMx: Fit The Continuous-Time Vector Autoregressive Model}
+  %\VignetteIndexEntry{fitCTVARMx: Fit the Continuous-Time Vector Autoregressive Model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

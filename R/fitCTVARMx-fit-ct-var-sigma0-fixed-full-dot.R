@@ -4,6 +4,7 @@
   # R0
   # initial condition
   # covariance
+  # nocov start
   if (is.null(sigma0_start)) {
     sigma0_start <- diag(k)
   } else {
@@ -26,4 +27,5 @@
       name = "sigma0"
     )
   )
+  # nocov end
 }

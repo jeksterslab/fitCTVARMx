@@ -7,7 +7,7 @@ cff-version: 1.2.0
 message: 'To cite package "fitCTVARMx" in publications use:'
 type: software
 license: MIT
-title: 'fitCTVARMx: Fit The Continuous-Time Vector Autoregressive Model'
+title: 'fitCTVARMx: Fit the Continuous-Time Vector Autoregressive Model'
 version: 0.0.0.9000
 abstract: Fit the continuous-time vector autoregressive model using the 'OpenMx' package.
 authors:
@@ -17,7 +17,7 @@ authors:
   orcid: https://orcid.org/0000-0003-4818-8420
 preferred-citation:
   type: manual
-  title: 'fitCTVARMx: Fit The Continuous-Time Vector Autoregressive Model'
+  title: 'fitCTVARMx: Fit the Continuous-Time Vector Autoregressive Model'
   authors:
   - family-names: Pesigan
     given-names: Ivan Jacob Agaloos

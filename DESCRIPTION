@@ -1,5 +1,5 @@
 Package: fitCTVARMx
-Title: Fit The Continuous-Time Vector Autoregressive Model
+Title: Fit the Continuous-Time Vector Autoregressive Model
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
