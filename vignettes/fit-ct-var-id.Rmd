@@ -1,7 +1,7 @@
 ---
-title: "Fit The Continuous-Time Vector Autoregressive Model By ID"
+title: "Fit the Continuous-Time Vector Autoregressive Model By ID"
 author: Ivan Jacob Agaloos Pesigan
-date: "2024-07-06"
+date: "2024-07-07"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -10,7 +10,7 @@ nocite: |
   @Hunter-2017
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Fit The Continuous-Time Vector Autoregressive Model By ID}
+  %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model By ID}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -431,12 +431,10 @@ fit <- FitCTVARIDMx(
 fit
 #> 
 #> Means of the estimated paramaters per individual.
-#>        phi_11        phi_21        phi_31        phi_12        phi_22 
-#> -0.4057400102  0.7778078051 -0.4572556424  0.0009494268 -0.5494709153 
-#>        phi_32        phi_13        phi_23        phi_33      sigma_11 
-#>  0.7245833722  0.0037631065 -0.0135516435 -0.7358268754  0.0990969430 
-#>      sigma_22      sigma_33 
-#>  0.0996388460  0.1001934137
+#>       phi_11       phi_21       phi_31       phi_12       phi_22       phi_32 
+#> -0.405740018  0.777807791 -0.457255643  0.000949408 -0.549470908  0.724583368 
+#>       phi_13       phi_23       phi_33     sigma_11     sigma_22     sigma_33 
+#>  0.003763113 -0.013551647 -0.735826877  0.099096944  0.099638843  0.100193412
 ```
 
 ## References

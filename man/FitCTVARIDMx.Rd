@@ -132,9 +132,13 @@ Number of cores to use.}
 \description{
 Fit First Order Continuous-Time Vector Autoregressive Model by ID
 }
+\seealso{
+Other CTVAR Functions: 
+\code{\link{FitCTVARMx}()}
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }
-\concept{Meta-Analysis of VAR Functions}
+\concept{CTVAR Functions}
 \keyword{fit}
-\keyword{metaVAR}
+\keyword{fitCTVARMx}

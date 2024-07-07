@@ -11,13 +11,13 @@
 
 \item{sigma}{Logical.
 If \code{sigma = TRUE},
-include estimates of the \code{sigma} matrix.
+include estimates of the \code{sigma} matrix, if available.
 If \code{sigma = FALSE},
 exclude estimates of the \code{sigma} matrix.}
 
 \item{theta}{Logical.
 If \code{theta = TRUE},
-include estimates of the \code{theta} matrix if available.
+include estimates of the \code{theta} matrix, if available.
 If \code{theta = FALSE},
 exclude estimates of the \code{theta} matrix.}
 

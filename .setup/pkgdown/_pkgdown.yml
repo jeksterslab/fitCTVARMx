@@ -7,3 +7,20 @@ template:
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto Slab"}
     code_font: {google: "JetBrains Mono"}
+
+reference:
+- title: Functions
+  contents:
+  - has_keyword("fitCTVARMx")
+- title: Methods
+  contents:
+  - has_keyword("methods")
+
+articles:
+- title: Examples
+  contents:
+  - fit-ct-var-id
+  - fit-ct-var
+- title: Session Information
+  contents:
+  - session

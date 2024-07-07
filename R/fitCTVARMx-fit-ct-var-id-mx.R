@@ -72,8 +72,8 @@
 #' @param ncores Positive integer.
 #'   Number of cores to use.
 #'
-#' @family Meta-Analysis of VAR Functions
-#' @keywords metaVAR fit
+#' @family CTVAR Functions
+#' @keywords fitCTVARMx fit
 #' @import OpenMx
 #' @importFrom stats coef vcov
 #' @export
@@ -103,6 +103,7 @@ FitCTVARIDMx <- function(data,
                          sigma0_ubound = NULL,
                          try = 1000,
                          ncores = NULL) {
+  byid <- TRUE
   args <- list(
     data = data,
     observed = observed,
@@ -129,7 +130,8 @@ FitCTVARIDMx <- function(data,
     sigma0_lbound = sigma0_lbound,
     sigma0_ubound = sigma0_ubound,
     try = try,
-    ncores = ncores
+    ncores = ncores,
+    byid = byid
   )
   output <- .FitCTVAR(
     data = data,
@@ -157,7 +159,8 @@ FitCTVARIDMx <- function(data,
     sigma0_lbound = sigma0_lbound,
     sigma0_ubound = sigma0_ubound,
     try = try,
-    ncores = ncores
+    ncores = ncores,
+    byid = byid
   )
   out <- list(
     call = match.call(),

@@ -1,5 +1,5 @@
 ---
-title: "Fit The Continuous-Time Vector Autoregressive Model By ID"
+title: "Fit the Continuous-Time Vector Autoregressive Model By ID"
 author: Ivan Jacob Agaloos Pesigan
 date: "`r Sys.Date()`"
 bibliography: "vignettes.bib"
@@ -10,7 +10,7 @@ nocite: |
   @Hunter-2017
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Fit The Continuous-Time Vector Autoregressive Model By ID}
+  %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model By ID}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
