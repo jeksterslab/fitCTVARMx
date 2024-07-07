@@ -15,6 +15,7 @@
       )
     )
   } else {
+    # nocov start
     return(
       .FitCTVARMu0Vec(
         k = k,
@@ -24,5 +25,6 @@
         mu0_ubound = mu0_ubound
       )
     )
+    # nocov end
   }
 }

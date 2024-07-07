@@ -38,7 +38,12 @@
     )
   }
   if (is.null(phi_ubound)) {
-    phi_ubound <- NA
+    phi_ubound <- matrix(
+      data = NA,
+      nrow = k,
+      ncol = k
+    )
+    diag(phi_ubound) <- .Machine$double.xmin
   } else {
     stopifnot(
       is.matrix(phi_ubound),

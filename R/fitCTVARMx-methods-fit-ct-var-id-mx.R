@@ -75,12 +75,12 @@ summary.fitctvaridmx <- function(object,
 #' @param object Object of class `fitctvaridmx`.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
-#'   include estimates of the `sigma` matrix.
+#'   include estimates of the `sigma` matrix, if available.
 #'   If `sigma = FALSE`,
 #'   exclude estimates of the `sigma` matrix.
 #' @param theta Logical.
 #'   If `theta = TRUE`,
-#'   include estimates of the `theta` matrix if available.
+#'   include estimates of the `theta` matrix, if available.
 #'   If `theta = FALSE`,
 #'   exclude estimates of the `theta` matrix.
 #' @param ... additional arguments.
@@ -137,12 +137,12 @@ coef.fitctvaridmx <- function(object,
 #' @param object Object of class `fitctvaridmx`.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
-#'   include estimates of the `sigma` matrix.
+#'   include estimates of the `sigma` matrix, if available.
 #'   If `sigma = FALSE`,
 #'   exclude estimates of the `sigma` matrix.
 #' @param theta Logical.
 #'   If `theta = TRUE`,
-#'   include estimates of the `theta` matrix if available.
+#'   include estimates of the `theta` matrix, if available.
 #'   If `theta = FALSE`,
 #'   exclude estimates of the `theta` matrix.
 #' @param ... additional arguments.
@@ -185,7 +185,7 @@ vcov.fitctvaridmx <- function(object,
       X = object$output,
       FUN = function(x,
                      idx) {
-        return(vcov(x)[idx, idx])
+        return(vcov(x)[idx, idx, drop = FALSE])
       },
       idx = idx
     )

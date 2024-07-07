@@ -6,7 +6,7 @@
       type = "Zero",
       nrow = 1,
       ncol = 1,
-      name = "x"
+      name = "covariate"
     )
   )
 }
