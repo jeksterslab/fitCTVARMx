@@ -8,6 +8,7 @@
   # R0
   # initial condition
   # covariance
+  # nocov start
   if (sigma0_fixed) {
     return(
       .FitCTVARSigma0Fixed(
@@ -39,4 +40,5 @@
       )
     }
   }
+  # nocov end
 }

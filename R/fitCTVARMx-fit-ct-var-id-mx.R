@@ -1,4 +1,4 @@
-#' Fit First Order Continuous-Time Vector Autoregressive Model by ID
+#' Fit the First Order Continuous-Time Vector Autoregressive Model by ID
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fitCTVARMx-fit-ct-var-id-mx.R
 \name{FitCTVARIDMx}
 \alias{FitCTVARIDMx}
-\title{Fit First Order Continuous-Time Vector Autoregressive Model by ID}
+\title{Fit the First Order Continuous-Time Vector Autoregressive Model by ID}
 \usage{
 FitCTVARIDMx(
   data,
@@ -130,7 +130,7 @@ Number of extra tries for \code{\link[OpenMx:mxTryHard]{OpenMx::mxTryHard()}}.}
 Number of cores to use.}
 }
 \description{
-Fit First Order Continuous-Time Vector Autoregressive Model by ID
+Fit the First Order Continuous-Time Vector Autoregressive Model by ID
 }
 \seealso{
 Other CTVAR Functions: 

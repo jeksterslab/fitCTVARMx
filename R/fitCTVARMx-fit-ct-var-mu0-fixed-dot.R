@@ -4,10 +4,10 @@
   # x0
   # initial condition
   # mean
+  # nocov start
   if (is.null(mu0_start)) {
     mu0_start <- rep(x = 0, times = k)
   } else {
-    # nocov start
     if (is.matrix(mu0_start)) {
       mu0_start <- as.vector(mu0_start)
     } else {
@@ -16,7 +16,6 @@
         length(mu0_start) == k
       )
     }
-    # nocov end
   }
   return(
     OpenMx::mxMatrix(
@@ -32,4 +31,5 @@
       name = "mu0"
     )
   )
+  # nocov end
 }
