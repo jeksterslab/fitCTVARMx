@@ -146,12 +146,13 @@ Fit the First-Order Continuous-Time Vector Autoregressive Model
 \dontrun{
 # Generate data using the simStateSpace package------------------------------
 set.seed(42)
-sim <- simStateSpace::SimSSMVARIVary(
+sim <- simStateSpace::SimSSMOUFixed(
   n = 5,
   time = 100,
-  mu0 = list(rep(x = 0, times = 3)),
-  sigma0_l = list(t(chol(diag(3)))),
-  mu = list(rep(x = 0, times = 3)),
+  delta_t = 0.10,
+  mu0 = rep(x = 0, times = 3),
+  sigma0_l = t(chol(diag(3))),
+  mu = rep(x = 0, times = 3),
   phi = matrix(
     data = c(
       -0.357, 0.771, -0.450,
@@ -160,7 +161,10 @@ sim <- simStateSpace::SimSSMVARIVary(
     ),
     nrow = 3
   ),
-  sigma_l = list(t(chol(diag(3))))
+  sigma_l = t(chol(diag(3))),
+  nu = rep(x = 0, times = 3),
+  lambda = diag(3),
+  theta_l = matrix(data = 0, nrow = 3, ncol = 3)
 )
 data <- as.data.frame(sim)
 

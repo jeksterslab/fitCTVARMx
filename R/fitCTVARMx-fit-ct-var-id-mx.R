@@ -90,14 +90,18 @@
 #'   phi = phi_mu,
 #'   vcov_phi_vec_l = t(chol(phi_sigma))
 #' )
-#' sim <- simStateSpace::SimSSMVARIVary(
+#' sim <- simStateSpace::SimSSMOUIVary(
 #'   n = 5,
 #'   time = 100,
+#'   delta_t = 0.10,
 #'   mu0 = list(rep(x = 0, times = 3)),
 #'   sigma0_l = list(t(chol(diag(3)))),
 #'   mu = list(rep(x = 0, times = 3)),
 #'   phi = phi,
-#'   sigma_l = list(t(chol(diag(3))))
+#'   sigma_l = list(t(chol(diag(3)))),
+#'   nu = list(rep(x = 0, times = 3)),
+#'   lambda = list(diag(3)),
+#'   theta_l = list(matrix(data = 0, nrow = 3, ncol = 3))
 #' )
 #' data <- as.data.frame(sim)
 #'
