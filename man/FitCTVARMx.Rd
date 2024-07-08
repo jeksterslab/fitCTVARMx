@@ -182,6 +182,22 @@ vcov(fit)
 }
 
 }
+\references{
+Hunter, M. D. (2017).
+State space modeling in an open source, modular,
+structural equation modeling environment.
+\emph{Structural Equation Modeling: A Multidisciplinary Journal},
+\emph{25}(2), 307–324.
+\doi{10.1080/10705511.2017.1369354}
+
+Neale, M. C., Hunter, M. D., Pritikin, J. N.,
+Zahery, M., Brick, T. R., Kirkpatrick, R. M., Estabrook, R.,
+Bates, T. C., Maes, H. H., & Boker, S. M. (2015).
+OpenMx 2.0: Extended structural equation and statistical modeling.
+\emph{Psychometrika},
+\emph{81}(2), 535–549.
+\doi{10.1007/s11336-014-9435-8}
+}
 \seealso{
 Other CTVAR Functions: 
 \code{\link{FitCTVARIDMx}()}
