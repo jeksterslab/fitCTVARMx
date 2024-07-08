@@ -322,7 +322,7 @@ and covariance matrix
 \right) .
 \end{equation}
 
-The SimPhiN function from the simStateSpace package generates random drift matrices from the multivariate normal distribution. Note that the function generates drift matrices that are stable.
+The `SimPhiN` function from the `simStateSpace` package generates random drift matrices from the multivariate normal distribution. Note that the function generates drift matrices that are stable.
 
 Let the dynamic process noise covariance matrix $\boldsymbol{\Sigma}$ be given by
 

@@ -249,7 +249,7 @@ and covariance matrix
 \right) .
 \end{equation}
 
-The SimPhiN function from the simStateSpace package generates random drift matrices from the multivariate normal distribution. Note that the function generates drift matrices that are stable.
+The `SimPhiN` function from the `simStateSpace` package generates random drift matrices from the multivariate normal distribution. Note that the function generates drift matrices that are stable.
 
 Let the dynamic process noise covariance matrix $\boldsymbol{\Sigma}$ be given by
 
@@ -273,97 +273,58 @@ Let $\Delta t = 0.1$.
 ``` r
 n
 #> [1] 100
-```
-
-``` r
 time
 #> [1] 1000
-```
-
-``` r
 delta_t
 #> [1] 0.1
-```
-
-``` r
 mu0
 #> [[1]]
 #> [1] 0 0 0
-```
-
-``` r
 sigma0
 #>      [,1] [,2] [,3]
 #> [1,]    1    0    0
 #> [2,]    0    1    0
 #> [3,]    0    0    1
-```
-
-``` r
 sigma0_l
 #> [[1]]
 #>      [,1] [,2] [,3]
 #> [1,]    1    0    0
 #> [2,]    0    1    0
 #> [3,]    0    0    1
-```
-
-``` r
 mu
 #> [[1]]
 #> [1] 0 0 0
-```
-
-``` r
 # first phi in the list of length n
 phi[[1]]
 #>            [,1]        [,2]        [,3]
 #> [1,] -0.4101502  0.02987347  0.09881764
 #> [2,]  0.8531253 -0.47051414  0.12907652
 #> [3,] -0.2282550  0.66648281 -0.72701868
-```
-
-``` r
 sigma
 #>      [,1] [,2] [,3]
 #> [1,]  0.1  0.0  0.0
 #> [2,]  0.0  0.1  0.0
 #> [3,]  0.0  0.0  0.1
-```
-
-``` r
 sigma_l
 #> [[1]]
 #>           [,1]      [,2]      [,3]
 #> [1,] 0.3162278 0.0000000 0.0000000
 #> [2,] 0.0000000 0.3162278 0.0000000
 #> [3,] 0.0000000 0.0000000 0.3162278
-```
-
-``` r
 nu
 #> [[1]]
 #> [1] 0 0 0
-```
-
-``` r
 lambda
 #> [[1]]
 #>      [,1] [,2] [,3]
 #> [1,]    1    0    0
 #> [2,]    0    1    0
 #> [3,]    0    0    1
-```
-
-``` r
 theta
 #>      [,1] [,2] [,3]
 #> [1,]    0    0    0
 #> [2,]    0    0    0
 #> [3,]    0    0    0
-```
-
-``` r
 theta_l
 #> [[1]]
 #>      [,1] [,2] [,3]
@@ -403,9 +364,6 @@ head(data)
 #> 4  1  0.3 -1.239194 -0.7836783 -1.072401
 #> 5  1  0.4 -1.110661 -0.9018310 -1.060215
 #> 6  1  0.5 -1.198872 -0.8450478 -1.084714
-```
-
-``` r
 plot(sim)
 ```
 
