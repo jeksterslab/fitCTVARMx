@@ -128,7 +128,7 @@ lapply(
       sigma_lbound = sigma_lbound,
       sigma_ubound = sigma_ubound,
       theta_fixed = FALSE,
-      theta_start = NULL,
+      theta_start = 0.10 * diag(p),
       theta_lbound = theta_lbound,
       theta_ubound = theta_ubound,
       mu0_fixed = TRUE,
