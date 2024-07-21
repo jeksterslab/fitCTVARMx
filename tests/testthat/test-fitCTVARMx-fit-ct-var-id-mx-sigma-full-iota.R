@@ -81,6 +81,9 @@ lapply(
       id = "id",
       time = "time",
       iota_fixed = FALSE,
+      iota_start = rep(x = 0, times = p),
+      iota_lbound = rep(x = NA, times = p),
+      iota_ubound = rep(x = NA, times = p),
       sigma_diag = FALSE,
       theta_fixed = FALSE,
       ncores = NULL
@@ -120,13 +123,15 @@ lapply(
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
     diag(phi_ubound) <- .Machine$double.xmin
-    iota_start <- rep(
-      x = 0,
-      times = p
+    iota_start <- matrix(
+      data = 0,
+      nrow = p,
+      ncol = 1
     )
-    iota_ubound <- iota_lbound <- rep(
-      x = NA,
-      times = p
+    iota_ubound <- iota_lbound <- matrix(
+      data = NA,
+      nrow = p,
+      ncol = 1
     )
     fit2 <- FitCTVARIDMx(
       data = data,
