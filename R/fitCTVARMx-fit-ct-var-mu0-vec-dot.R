@@ -1,5 +1,6 @@
 .FitCTVARMu0Vec <- function(k,
                             idx,
+                            statenames,
                             mu0_start = NULL,
                             mu0_lbound = NULL,
                             mu0_ubound = NULL) {
@@ -8,38 +9,62 @@
   # mean
   # nocov start
   if (is.null(mu0_start)) {
-    mu0_start <- rep(x = 0, times = k)
+    mu0_start <- matrix(
+      data = 0,
+      nrow = k,
+      ncol = 1
+    )
   } else {
-    if (is.matrix(mu0_start)) {
-      mu0_start <- as.vector(mu0_start)
+    if (is.vector(mu0_start)) {
+      mu0_start <- matrix(
+        data = mu0_start,
+        nrow = k,
+        ncol = 1
+      )
     } else {
       stopifnot(
-        is.vector(mu0_start),
-        length(mu0_start) == k
+        is.matrix(mu0_start),
+        dim(mu0_start) == c(k, 1)
       )
     }
   }
   if (is.null(mu0_lbound)) {
-    mu0_lbound <- rep(x = -1, times = k)
+    mu0_lbound <- matrix(
+      data = -1,
+      nrow = k,
+      ncol = 1
+    )
   } else {
-    if (is.matrix(mu0_lbound)) {
-      mu0_lbound <- as.vector(mu0_lbound)
+    if (is.vector(mu0_lbound)) {
+      mu0_lbound <- matrix(
+        data = mu0_lbound,
+        nrow = k,
+        ncol = 1
+      )
     } else {
       stopifnot(
-        is.vector(mu0_lbound),
-        length(mu0_lbound) == k
+        is.matrix(mu0_lbound),
+        dim(mu0_lbound) == c(k, 1)
       )
     }
   }
   if (is.null(mu0_ubound)) {
-    mu0_ubound <- rep(x = +1, times = k)
+    mu0_ubound <- matrix(
+      data = +1,
+      nrow = k,
+      ncol = 1
+    )
   } else {
-    if (is.matrix(mu0_ubound)) {
-      mu0_ubound <- as.vector(mu0_ubound)
+    if (is.vector(mu0_ubound)) {
+      mu0_ubound <- matrix(
+        data = mu0_ubound,
+        nrow = k,
+        ncol = 1
+      )
     } else {
       stopifnot(
-        is.vector(mu0_ubound),
-        length(mu0_ubound) == k
+        is.matrix(mu0_ubound),
+        dim(mu0_ubound) == c(k, 1)
       )
     }
   }
@@ -50,10 +75,14 @@
       ncol = 1,
       free = TRUE,
       values = mu0_start,
-      labels = paste0("mu0_", idx, idx),
+      labels = paste0("mu0_", idx),
       lbound = mu0_lbound,
       ubound = mu0_ubound,
       byrow = FALSE,
+      dimnames = list(
+        statenames,
+        "mu0"
+      ),
       name = "mu0"
     )
   )

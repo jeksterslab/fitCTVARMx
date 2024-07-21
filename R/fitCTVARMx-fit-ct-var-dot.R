@@ -2,6 +2,10 @@
                       observed,
                       id,
                       time,
+                      iota_fixed = TRUE,
+                      iota_start = NULL,
+                      iota_lbound = NULL,
+                      iota_ubound = NULL,
                       phi_start = NULL,
                       phi_lbound = NULL,
                       phi_ubound = NULL,
@@ -41,7 +45,14 @@
         phi_lbound = phi_lbound,
         phi_ubound = phi_ubound
       ),
-      gamma = .FitCTVARGamma(k = k),
+      gamma = .FitCTVARGamma(
+        k = k,
+        idx = idx,
+        iota_fixed = iota_fixed,
+        iota_start = iota_start,
+        iota_lbound = iota_lbound,
+        iota_ubound = iota_ubound
+      ),
       lambda = .FitCTVARLambda(
         k = k,
         observed = observed,
@@ -69,6 +80,7 @@
       mu0 = .FitCTVARMu0(
         k = k,
         idx = idx,
+        statenames = statenames,
         mu0_fixed = mu0_fixed,
         mu0_start = mu0_start,
         mu0_lbound = mu0_lbound,

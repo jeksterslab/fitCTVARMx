@@ -35,6 +35,11 @@ summary.fitctvarmx <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `fitctvarmx`.
+#' @param iota Logical.
+#'   If `iota = TRUE`,
+#'   include estimates of the `iota` vector, if available.
+#'   If `iota = FALSE`,
+#'   exclude estimates of the `iota` vector.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
 #'   include estimates of the `sigma` matrix, if available.
@@ -52,6 +57,7 @@ summary.fitctvarmx <- function(object,
 #' @keywords methods
 #' @export
 coef.fitctvarmx <- function(object,
+                            iota = FALSE,
                             sigma = FALSE,
                             theta = FALSE,
                             ...) {
@@ -61,6 +67,15 @@ coef.fitctvarmx <- function(object,
     pattern = "^phi_",
     x = parnames
   )
+  if (iota) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^iota_",
+        x = parnames
+      )
+    )
+  }
   if (sigma) {
     idx <- c(
       idx,
@@ -89,6 +104,11 @@ coef.fitctvarmx <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `fitctvarmx`.
+#' @param iota Logical.
+#'   If `iota = TRUE`,
+#'   include estimates of the `iota` vector, if available.
+#'   If `iota = FALSE`,
+#'   exclude estimates of the `iota` vector.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
 #'   include estimates of the `sigma` matrix, if available.
@@ -106,6 +126,7 @@ coef.fitctvarmx <- function(object,
 #' @keywords methods
 #' @export
 vcov.fitctvarmx <- function(object,
+                            iota = FALSE,
                             sigma = FALSE,
                             theta = FALSE,
                             ...) {
@@ -115,6 +136,15 @@ vcov.fitctvarmx <- function(object,
     pattern = "^phi_",
     x = parnames
   )
+  if (iota) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^iota_",
+        x = parnames
+      )
+    )
+  }
   if (sigma) {
     idx <- c(
       idx,

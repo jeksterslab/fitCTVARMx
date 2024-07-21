@@ -1,4 +1,5 @@
 .FitCTVARMu0Fixed <- function(k,
+                              statenames,
                               mu0_start = NULL) {
   # mu0_start will be the fixed value
   # x0
@@ -28,6 +29,10 @@
       lbound = NA,
       ubound = NA,
       byrow = FALSE,
+      dimnames = list(
+        statenames,
+        "mu0"
+      ),
       name = "mu0"
     )
   )
