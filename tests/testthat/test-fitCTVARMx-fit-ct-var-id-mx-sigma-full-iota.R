@@ -7,7 +7,7 @@ lapply(
     message(text)
     set.seed(42)
     n <- 2
-    time <- 500
+    time <- 1000 # longer for iota
     delta_t <- 0.10
     k <- p <- 3
     iden <- diag(k)
@@ -182,6 +182,17 @@ lapply(
           )
         )
       }
+    )
+    # coverage
+    FitCTVARIDMx(
+      data = data,
+      observed = paste0("y", seq_len(k)),
+      id = "id",
+      time = "time",
+      iota_fixed = FALSE,
+      sigma_diag = FALSE,
+      theta_fixed = FALSE,
+      ncores = NULL
     )
   },
   text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota",
