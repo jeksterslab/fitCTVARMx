@@ -42,7 +42,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'fitctvaridmx'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">object</span>, sigma <span class="op">=</span> <span class="cn">FALSE</span>, theta <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">object</span>, iota <span class="op">=</span> <span class="cn">FALSE</span>, sigma <span class="op">=</span> <span class="cn">FALSE</span>, theta <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -51,6 +51,14 @@
 
 <dl><dt id="arg-object">object<a class="anchor" aria-label="anchor" href="#arg-object"></a></dt>
 <dd><p>Object of class <code>fitctvaridmx</code>.</p></dd>
+
+
+<dt id="arg-iota">iota<a class="anchor" aria-label="anchor" href="#arg-iota"></a></dt>
+<dd><p>Logical.
+If <code>iota = TRUE</code>,
+include estimates of the <code>iota</code> vector, if available.
+If <code>iota = FALSE</code>,
+exclude estimates of the <code>iota</code> vector.</p></dd>
 
 
 <dt id="arg-sigma">sigma<a class="anchor" aria-label="anchor" href="#arg-sigma"></a></dt>

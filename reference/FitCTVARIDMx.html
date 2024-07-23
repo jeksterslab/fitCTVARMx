@@ -46,6 +46,10 @@
 <span>  <span class="va">observed</span>,</span>
 <span>  <span class="va">id</span>,</span>
 <span>  <span class="va">time</span>,</span>
+<span>  iota_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  iota_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  iota_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  iota_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phi_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phi_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phi_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -98,6 +102,32 @@ A character string of the name of the ID variable in the data.</p></dd>
 <dt id="arg-time">time<a class="anchor" aria-label="anchor" href="#arg-time"></a></dt>
 <dd><p>Character string.
 A character string of the name of the TIME variable in the data.</p></dd>
+
+
+<dt id="arg-iota-fixed">iota_fixed<a class="anchor" aria-label="anchor" href="#arg-iota-fixed"></a></dt>
+<dd><p>Logical.
+If <code>iota_fixed = TRUE</code>,
+the dynamic model intercept vector <code>iota</code> is fixed at zero.
+If <code>iota_fixed = FALSE</code>,
+the dynamic model intercept vector <code>iota</code> is estimated.</p></dd>
+
+
+<dt id="arg-iota-start">iota_start<a class="anchor" aria-label="anchor" href="#arg-iota-start"></a></dt>
+<dd><p>Optional starting values for <code>iota</code>.
+If <code>iota_fixed = TRUE</code>,
+<code>iota_start</code> will be used as fixed values.
+If <code>iota_fixed = FALSE</code>,
+<code>iota_start</code> will be used as starting values.</p></dd>
+
+
+<dt id="arg-iota-lbound">iota_lbound<a class="anchor" aria-label="anchor" href="#arg-iota-lbound"></a></dt>
+<dd><p>Optional lower bound for <code>iota</code>.
+Ignored if <code>iota_fixed = TRUE</code>.</p></dd>
+
+
+<dt id="arg-iota-ubound">iota_ubound<a class="anchor" aria-label="anchor" href="#arg-iota-ubound"></a></dt>
+<dd><p>Optional upper bound for <code>iota</code>.
+Ignored if <code>iota_fixed = TRUE</code>.</p></dd>
 
 
 <dt id="arg-phi-start">phi_start<a class="anchor" aria-label="anchor" href="#arg-phi-start"></a></dt>
@@ -168,8 +198,10 @@ initial mean vector <code>mu0</code> is estimated.</p></dd>
 
 <dt id="arg-mu-start">mu0_start<a class="anchor" aria-label="anchor" href="#arg-mu-start"></a></dt>
 <dd><p>Optional starting values for <code>mu0</code>.
-If <code>mu0_fixed = TRUE</code>, <code>mu0_start</code> will be used as fixed values.
-If <code>mu0_fixed = FALSE</code>, <code>mu0_start</code> will be used as starting values.</p></dd>
+If <code>mu0_fixed = TRUE</code>,
+<code>mu0_start</code> will be used as fixed values.
+If <code>mu0_fixed = FALSE</code>,
+<code>mu0_start</code> will be used as starting values.</p></dd>
 
 
 <dt id="arg-mu-lbound">mu0_lbound<a class="anchor" aria-label="anchor" href="#arg-mu-lbound"></a></dt>
@@ -198,8 +230,10 @@ If <code>sigma0_diag = TRUE</code>,
 
 <dt id="arg-sigma-start">sigma0_start<a class="anchor" aria-label="anchor" href="#arg-sigma-start"></a></dt>
 <dd><p>Optional starting values for <code>sigma0</code>.
-If <code>sigma0_fixed = TRUE</code>, <code>sigma0_start</code> will be used as fixed values.
-If <code>sigma0_fixed = FALSE</code>, <code>sigma0_start</code> will be used as starting values.</p></dd>
+If <code>sigma0_fixed = TRUE</code>,
+<code>sigma0_start</code> will be used as fixed values.
+If <code>sigma0_fixed = FALSE</code>,
+<code>sigma0_start</code> will be used as starting values.</p></dd>
 
 
 <dt id="arg-sigma-lbound">sigma0_lbound<a class="anchor" aria-label="anchor" href="#arg-sigma-lbound"></a></dt>
