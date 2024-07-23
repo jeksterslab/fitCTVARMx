@@ -4,10 +4,16 @@
 \alias{coef.fitctvaridmx}
 \title{Parameter Estimates}
 \usage{
-\method{coef}{fitctvaridmx}(object, sigma = FALSE, theta = FALSE, ...)
+\method{coef}{fitctvaridmx}(object, iota = FALSE, sigma = FALSE, theta = FALSE, ...)
 }
 \arguments{
 \item{object}{Object of class \code{fitctvaridmx}.}
+
+\item{iota}{Logical.
+If \code{iota = TRUE},
+include estimates of the \code{iota} vector, if available.
+If \code{iota = FALSE},
+exclude estimates of the \code{iota} vector.}
 
 \item{sigma}{Logical.
 If \code{sigma = TRUE},

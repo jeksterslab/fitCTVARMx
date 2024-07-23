@@ -73,6 +73,11 @@ summary.fitctvaridmx <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `fitctvaridmx`.
+#' @param iota Logical.
+#'   If `iota = TRUE`,
+#'   include estimates of the `iota` vector, if available.
+#'   If `iota = FALSE`,
+#'   exclude estimates of the `iota` vector.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
 #'   include estimates of the `sigma` matrix, if available.
@@ -90,6 +95,7 @@ summary.fitctvaridmx <- function(object,
 #' @keywords methods
 #' @export
 coef.fitctvaridmx <- function(object,
+                              iota = FALSE,
                               sigma = FALSE,
                               theta = FALSE,
                               ...) {
@@ -100,6 +106,15 @@ coef.fitctvaridmx <- function(object,
     pattern = "^phi_",
     x = parnames
   )
+  if (iota) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^iota_",
+        x = parnames
+      )
+    )
+  }
   if (sigma) {
     idx <- c(
       idx,
@@ -135,6 +150,11 @@ coef.fitctvaridmx <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object Object of class `fitctvaridmx`.
+#' @param iota Logical.
+#'   If `iota = TRUE`,
+#'   include estimates of the `iota` vector, if available.
+#'   If `iota = FALSE`,
+#'   exclude estimates of the `iota` vector.
 #' @param sigma Logical.
 #'   If `sigma = TRUE`,
 #'   include estimates of the `sigma` matrix, if available.
@@ -152,6 +172,7 @@ coef.fitctvaridmx <- function(object,
 #' @keywords methods
 #' @export
 vcov.fitctvaridmx <- function(object,
+                              iota = FALSE,
                               sigma = FALSE,
                               theta = FALSE,
                               ...) {
@@ -162,6 +183,15 @@ vcov.fitctvaridmx <- function(object,
     pattern = "^phi_",
     x = parnames
   )
+  if (iota) {
+    idx <- c(
+      idx,
+      grep(
+        pattern = "^iota_",
+        x = parnames
+      )
+    )
+  }
   if (sigma) {
     idx <- c(
       idx,
