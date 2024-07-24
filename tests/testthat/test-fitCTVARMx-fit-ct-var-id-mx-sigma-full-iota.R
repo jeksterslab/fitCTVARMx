@@ -7,7 +7,7 @@ lapply(
     message(text)
     set.seed(42)
     n <- 2
-    time <- 1000 # longer for iota
+    time <- 500
     delta_t <- 0.10
     k <- p <- 3
     iden <- diag(k)
@@ -177,7 +177,17 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              summary(fit) - summary(fit2)
+              c(
+                phi_mu,
+                null_vec,
+                null_vec,
+                sigma[
+                  lower.tri(
+                    x = sigma,
+                    diag = TRUE
+                  )
+                ]
+              ) - summary(fit2)
             ) <= tol
           )
         )
