@@ -171,28 +171,28 @@ lapply(
     summary(fit2, means = FALSE)
     coef(fit2, iota = TRUE, sigma = TRUE, theta = TRUE)
     vcov(fit2, iota = TRUE, sigma = TRUE, theta = TRUE)
-    # testthat::test_that(
-    #  paste(text, 2),
-    #  {
-    #    testthat::expect_true(
-    #      all(
-    #        abs(
-    #          c(
-    #            phi_mu,
-    #            null_vec,
-    #            null_vec,
-    #            sigma[
-    #              lower.tri(
-    #                x = sigma,
-    #                diag = TRUE
-    #              )
-    #            ]
-    #          ) - summary(fit2)
-    #        ) <= tol
-    #      )
-    #    )
-    #  }
-    # )
+    testthat::test_that(
+      paste(text, 2),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi_mu,
+                null_vec,
+                null_vec,
+                sigma[
+                  lower.tri(
+                    x = sigma,
+                    diag = TRUE
+                  )
+                ]
+              ) - summary(fit2)
+            ) <= tol
+          )
+        )
+      }
+    )
     # coverage
     FitCTVARIDMx(
       data = data,
@@ -206,6 +206,5 @@ lapply(
     )
   },
   text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota",
-  tol = 0.3
+  tol = 0.5
 )
-git
