@@ -111,7 +111,7 @@ lapply(
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
     diag(phi_ubound) <- .Machine$double.xmin
-    fit2 <- FitCTVARIDMx(
+    fit <- FitCTVARIDMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -139,19 +139,22 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    print(fit2)
-    summary(fit2)
-    print(fit2, means = FALSE)
-    summary(fit2, means = FALSE)
-    coef(fit2, sigma = TRUE, theta = TRUE)
-    vcov(fit2, sigma = TRUE, theta = TRUE)
+    print(fit)
+    summary(fit)
+    print(fit, means = FALSE)
+    summary(fit, means = FALSE)
+    coef(fit, sigma = TRUE, theta = TRUE)
+    vcov(fit, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 2),
       {
         testthat::expect_true(
           all(
             abs(
-              summary(fit) - summary(fit2)
+              c(
+                phi_mu,
+                diag(sigma)
+              ) - summary(fit)
             ) <= tol
           )
         )
