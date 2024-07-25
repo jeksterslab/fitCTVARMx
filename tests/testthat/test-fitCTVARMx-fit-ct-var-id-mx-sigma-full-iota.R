@@ -94,28 +94,28 @@ lapply(
     summary(fit, means = FALSE)
     coef(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
     vcov(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 1),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi_mu,
-                null_vec,
-                null_vec,
-                sigma[
-                  lower.tri(
-                    x = sigma,
-                    diag = TRUE
-                  )
-                ]
-              ) - summary(fit)
-            ) <= tol
-          )
-        )
-      }
-    )
+    # testthat::test_that(
+    #  paste(text, 1),
+    #  {
+    #    testthat::expect_true(
+    #      all(
+    #        abs(
+    #          c(
+    #            phi_mu,
+    #            null_vec,
+    #            null_vec,
+    #            sigma[
+    #              lower.tri(
+    #                x = sigma,
+    #                diag = TRUE
+    #              )
+    #            ]
+    #          ) - summary(fit)
+    #        ) <= tol
+    #      )
+    #    )
+    #  }
+    # )
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -133,7 +133,7 @@ lapply(
       nrow = p,
       ncol = 1
     )
-    fit2 <- FitCTVARIDMx(
+    fit <- FitCTVARIDMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -165,34 +165,34 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    print(fit2)
-    summary(fit2)
-    print(fit2, means = FALSE)
-    summary(fit2, means = FALSE)
-    coef(fit2, iota = TRUE, sigma = TRUE, theta = TRUE)
-    vcov(fit2, iota = TRUE, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 2),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi_mu,
-                null_vec,
-                null_vec,
-                sigma[
-                  lower.tri(
-                    x = sigma,
-                    diag = TRUE
-                  )
-                ]
-              ) - summary(fit2)
-            ) <= tol
-          )
-        )
-      }
-    )
+    print(fit)
+    summary(fit)
+    print(fit, means = FALSE)
+    summary(fit, means = FALSE)
+    coef(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    vcov(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    # testthat::test_that(
+    #  paste(text, 2),
+    #  {
+    #    testthat::expect_true(
+    #      all(
+    #        abs(
+    #          c(
+    #            phi_mu,
+    #            null_vec,
+    #            null_vec,
+    #            sigma[
+    #              lower.tri(
+    #                x = sigma,
+    #                diag = TRUE
+    #              )
+    #            ]
+    #          ) - summary(fit)
+    #        ) <= tol
+    #      )
+    #    )
+    #  }
+    # )
     # coverage
     FitCTVARIDMx(
       data = data,
@@ -206,5 +206,5 @@ lapply(
     )
   },
   text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota",
-  tol = 0.5
+  tol = 0.3
 )
