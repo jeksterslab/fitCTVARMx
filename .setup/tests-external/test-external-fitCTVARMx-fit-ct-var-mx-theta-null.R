@@ -63,12 +63,6 @@ lapply(
       sigma_diag = TRUE,
       ncores = NULL
     )
-    print.fitctvarmx(fit)
-    summary.fitctvarmx(fit)
-    print.fitctvarmx(fit, means = FALSE)
-    summary.fitctvarmx(fit, means = FALSE)
-    coef.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
-    vcov.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 1),
       {

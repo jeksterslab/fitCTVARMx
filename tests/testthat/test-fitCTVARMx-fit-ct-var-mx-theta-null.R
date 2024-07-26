@@ -2,7 +2,8 @@
 lapply(
   X = 1,
   FUN = function(i,
-                 text) {
+                 text,
+                 tol) {
     message(text)
     set.seed(42)
     n <- 2
@@ -68,6 +69,21 @@ lapply(
     summary.fitctvarmx(fit, means = FALSE)
     coef.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
     vcov.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
+    testthat::test_that(
+      paste(text, 1),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi,
+                diag(sigma)
+              ) - coef.fitctvarmx(fit, sigma = TRUE)
+            ) <= tol
+          )
+        )
+      }
+    )
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -103,6 +119,22 @@ lapply(
       try = 1000,
       ncores = NULL
     )
+    testthat::test_that(
+      paste(text, 2),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi,
+                diag(sigma)
+              ) - coef.fitctvarmx(fit, sigma = TRUE)
+            ) <= tol
+          )
+        )
+      }
+    )
   },
-  text = "test-fitCTVARMx-fit-ct-var-mx-theta-null"
+  text = "test-fitCTVARMx-fit-ct-var-mx-theta-null",
+  tol = 1
 )

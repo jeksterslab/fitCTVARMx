@@ -88,12 +88,6 @@ lapply(
       theta_fixed = FALSE,
       ncores = NULL
     )
-    print.fitctvaridmx(fit)
-    summary.fitctvaridmx(fit)
-    print.fitctvaridmx(fit, means = FALSE)
-    summary.fitctvaridmx(fit, means = FALSE)
-    coef.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
-    vcov.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 1),
       {
