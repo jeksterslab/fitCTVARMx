@@ -1,11 +1,12 @@
-## ---- test-fitCTVARMx-fit-ct-var-id-mx-sigma-full
+## ---- test-external-fitCTVARMx-fit-ct-var-mx-theta-null
 lapply(
   X = 1,
   FUN = function(i,
-                 text) {
+                 text,
+                 tol) {
     message(text)
     set.seed(42)
-    n <- 2
+    n <- 10
     time <- 100
     delta_t <- 0.10
     k <- p <- 3
@@ -16,31 +17,17 @@ lapply(
       nrow = p,
       ncol = p
     )
-    mu0 <- list(
-      null_vec
-    )
+    mu0 <- null_vec
     sigma0 <- diag(p)
-    sigma0_l <- list(
-      t(chol(sigma0))
-    )
-    mu <- list(
-      null_vec
-    )
+    sigma0_l <- t(chol(sigma0))
+    mu <- null_vec
     sigma <- 0.1 * iden
-    sigma_l <- list(
-      t(chol(sigma))
-    )
-    nu <- list(
-      null_vec
-    )
-    lambda <- list(
-      iden
-    )
+    sigma_l <- t(chol(sigma))
+    nu <- null_vec
+    lambda <- iden
     theta <- null_mat
-    theta_l <- list(
-      null_mat
-    )
-    phi_mu <- matrix(
+    theta_l <- null_mat
+    phi <- matrix(
       data = c(
         -0.357,
         0.771,
@@ -54,13 +41,7 @@ lapply(
       ),
       nrow = k
     )
-    phi_sigma <- 0.00001 * diag(p * p)
-    phi <- simStateSpace::SimPhiN(
-      n = n,
-      phi = phi_mu,
-      vcov_phi_vec_l = t(chol(phi_sigma))
-    )
-    sim <- simStateSpace::SimSSMOUIVary(
+    sim <- simStateSpace::SimSSMOUFixed(
       n = n,
       time = time,
       delta_t = delta_t,
@@ -74,20 +55,35 @@ lapply(
       theta_l = theta_l
     )
     data <- as.data.frame(sim)
-    fit <- fitCTVARMx::FitCTVARIDMx(
+    fit <- fitCTVARMx::FitCTVARMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
       time = "time",
-      sigma_diag = FALSE,
+      sigma_diag = TRUE,
       ncores = NULL
     )
-    print.fitctvaridmx(fit)
-    summary.fitctvaridmx(fit)
-    print.fitctvaridmx(fit, means = FALSE)
-    summary.fitctvaridmx(fit, means = FALSE)
-    coef.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
-    vcov.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
+    print.fitctvarmx(fit)
+    summary.fitctvarmx(fit)
+    print.fitctvarmx(fit, means = FALSE)
+    summary.fitctvarmx(fit, means = FALSE)
+    coef.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
+    vcov.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
+    testthat::test_that(
+      paste(text, 1),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi,
+                diag(sigma)
+              ) - coef.fitctvarmx(fit, sigma = TRUE)
+            ) <= tol
+          )
+        )
+      }
+    )
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -95,15 +91,15 @@ lapply(
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
     diag(phi_ubound) <- .Machine$double.xmin
-    fit <- fitCTVARMx::FitCTVARIDMx(
+    fit <- fitCTVARMx::FitCTVARMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
       time = "time",
-      phi_start = phi_mu,
+      phi_start = phi,
       phi_lbound = phi_lbound,
       phi_ubound = phi_ubound,
-      sigma_diag = FALSE,
+      sigma_diag = TRUE,
       sigma_start = sigma,
       sigma_lbound = sigma_lbound,
       sigma_ubound = sigma_ubound,
@@ -123,6 +119,22 @@ lapply(
       try = 1000,
       ncores = NULL
     )
+    testthat::test_that(
+      paste(text, 2),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi,
+                diag(sigma)
+              ) - coef.fitctvarmx(fit, sigma = TRUE)
+            ) <= tol
+          )
+        )
+      }
+    )
   },
-  text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full"
+  text = "test-external-fitCTVARMx-fit-ct-var-mx-theta-null",
+  tol = 0.3
 )

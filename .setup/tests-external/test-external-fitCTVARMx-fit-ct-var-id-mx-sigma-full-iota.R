@@ -1,11 +1,12 @@
-## ---- test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota
+## ---- test-external-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota
 lapply(
   X = 1,
   FUN = function(i,
-                 text) {
+                 text,
+                 tol) {
     message(text)
     set.seed(42)
-    n <- 2
+    n <- 10
     time <- 100
     delta_t <- 0.10
     k <- p <- 3
@@ -93,6 +94,28 @@ lapply(
     summary.fitctvaridmx(fit, means = FALSE)
     coef.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
     vcov.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    testthat::test_that(
+      paste(text, 1),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi_mu,
+                null_vec,
+                null_vec,
+                sigma[
+                  lower.tri(
+                    x = sigma,
+                    diag = TRUE
+                  )
+                ]
+              ) - summary.fitctvaridmx(fit)
+            ) <= tol
+          )
+        )
+      }
+    )
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -142,16 +165,29 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    fitCTVARMx::FitCTVARIDMx(
-      data = data,
-      observed = paste0("y", seq_len(k)),
-      id = "id",
-      time = "time",
-      iota_fixed = FALSE,
-      sigma_diag = FALSE,
-      theta_fixed = FALSE,
-      ncores = NULL
+    testthat::test_that(
+      paste(text, 2),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi_mu,
+                null_vec,
+                null_vec,
+                sigma[
+                  lower.tri(
+                    x = sigma,
+                    diag = TRUE
+                  )
+                ]
+              ) - summary.fitctvaridmx(fit)
+            ) <= tol
+          )
+        )
+      }
     )
   },
-  text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota"
+  text = "test-external-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota",
+  tol = 0.3
 )

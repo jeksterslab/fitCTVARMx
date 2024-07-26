@@ -1,11 +1,12 @@
-## ---- test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota
+## ---- test-external-fitCTVARMx-fit-ct-var-id-mx-theta-diag
 lapply(
   X = 1,
   FUN = function(i,
-                 text) {
+                 text,
+                 tol) {
     message(text)
     set.seed(42)
-    n <- 2
+    n <- 10
     time <- 100
     delta_t <- 0.10
     k <- p <- 3
@@ -79,11 +80,7 @@ lapply(
       observed = paste0("y", seq_len(k)),
       id = "id",
       time = "time",
-      iota_fixed = FALSE,
-      iota_start = rep(x = 0, times = p),
-      iota_lbound = rep(x = NA, times = p),
-      iota_ubound = rep(x = NA, times = p),
-      sigma_diag = FALSE,
+      sigma_diag = TRUE,
       theta_fixed = FALSE,
       ncores = NULL
     )
@@ -91,45 +88,49 @@ lapply(
     summary.fitctvaridmx(fit)
     print.fitctvaridmx(fit, means = FALSE)
     summary.fitctvaridmx(fit, means = FALSE)
-    coef.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
-    vcov.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    coef.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
+    vcov.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
+    testthat::test_that(
+      paste(text, 1),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi_mu,
+                diag(sigma),
+                rep(x = 0, times = p)
+              ) - summary.fitctvaridmx(fit)
+            ) <= tol
+          )
+        )
+      }
+    )
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
       ncol = p
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
+    theta_ubound <- theta_lbound <- phi_lbound
+    diag(theta_lbound) <- .Machine$double.xmin
     diag(phi_ubound) <- .Machine$double.xmin
-    iota_start <- matrix(
-      data = 0,
-      nrow = p,
-      ncol = 1
-    )
-    iota_ubound <- iota_lbound <- matrix(
-      data = NA,
-      nrow = p,
-      ncol = 1
-    )
     fit <- fitCTVARMx::FitCTVARIDMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
       time = "time",
-      iota_fixed = FALSE,
-      iota_start = iota_start,
-      iota_lbound = iota_lbound,
-      iota_ubound = iota_ubound,
       phi_start = phi_mu,
       phi_lbound = phi_lbound,
       phi_ubound = phi_ubound,
-      sigma_diag = FALSE,
+      sigma_diag = TRUE,
       sigma_start = sigma,
       sigma_lbound = sigma_lbound,
       sigma_ubound = sigma_ubound,
       theta_fixed = FALSE,
-      theta_start = NULL,
-      theta_lbound = NULL,
-      theta_ubound = NULL,
+      theta_start = 0.10 * diag(p),
+      theta_lbound = theta_lbound,
+      theta_ubound = theta_ubound,
       mu0_fixed = TRUE,
       mu0_start = NULL,
       mu0_lbound = NULL,
@@ -142,16 +143,23 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    fitCTVARMx::FitCTVARIDMx(
-      data = data,
-      observed = paste0("y", seq_len(k)),
-      id = "id",
-      time = "time",
-      iota_fixed = FALSE,
-      sigma_diag = FALSE,
-      theta_fixed = FALSE,
-      ncores = NULL
+    testthat::test_that(
+      paste(text, 2),
+      {
+        testthat::expect_true(
+          all(
+            abs(
+              c(
+                phi_mu,
+                diag(sigma),
+                rep(x = 0, times = p)
+              ) - summary.fitctvaridmx(fit)
+            ) <= tol
+          )
+        )
+      }
     )
   },
-  text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota"
+  text = "test-external-fitCTVARMx-fit-ct-var-id-mx-theta-diag",
+  tol = 0.3
 )

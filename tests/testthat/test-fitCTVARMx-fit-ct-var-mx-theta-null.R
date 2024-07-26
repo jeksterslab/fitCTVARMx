@@ -2,12 +2,11 @@
 lapply(
   X = 1,
   FUN = function(i,
-                 text,
-                 tol) {
+                 text) {
     message(text)
     set.seed(42)
     n <- 2
-    time <- 500
+    time <- 100
     delta_t <- 0.10
     k <- p <- 3
     iden <- diag(k)
@@ -55,7 +54,7 @@ lapply(
       theta_l = theta_l
     )
     data <- as.data.frame(sim)
-    fit <- FitCTVARMx(
+    fit <- fitCTVARMx::FitCTVARMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -63,27 +62,12 @@ lapply(
       sigma_diag = TRUE,
       ncores = NULL
     )
-    print(fit)
-    summary(fit)
-    print(fit, means = FALSE)
-    summary(fit, means = FALSE)
-    coef(fit, sigma = TRUE, theta = TRUE)
-    vcov(fit, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 1),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi,
-                diag(sigma)
-              ) - coef(fit, sigma = TRUE)
-            ) <= tol
-          )
-        )
-      }
-    )
+    print.fitctvarmx(fit)
+    summary.fitctvarmx(fit)
+    print.fitctvarmx(fit, means = FALSE)
+    summary.fitctvarmx(fit, means = FALSE)
+    coef.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
+    vcov.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -91,7 +75,7 @@ lapply(
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
     diag(phi_ubound) <- .Machine$double.xmin
-    fit <- FitCTVARMx(
+    fit <- fitCTVARMx::FitCTVARMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -119,28 +103,6 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    print(fit)
-    summary(fit)
-    print(fit, means = FALSE)
-    summary(fit, means = FALSE)
-    coef(fit, sigma = TRUE, theta = TRUE)
-    vcov(fit, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 2),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi,
-                diag(sigma)
-              ) - coef(fit, sigma = TRUE)
-            ) <= tol
-          )
-        )
-      }
-    )
   },
-  text = "test-fitCTVARMx-fit-ct-var-mx-theta-null",
-  tol = 0.3
+  text = "test-fitCTVARMx-fit-ct-var-mx-theta-null"
 )
