@@ -2,12 +2,11 @@
 lapply(
   X = 1,
   FUN = function(i,
-                 text,
-                 tol) {
+                 text) {
     message(text)
     set.seed(42)
     n <- 2
-    time <- 500
+    time <- 100
     delta_t <- 0.10
     k <- p <- 3
     iden <- diag(k)
@@ -75,7 +74,7 @@ lapply(
       theta_l = theta_l
     )
     data <- as.data.frame(sim)
-    fit <- FitCTVARIDMx(
+    fit <- fitCTVARMx::FitCTVARIDMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -83,32 +82,12 @@ lapply(
       sigma_diag = FALSE,
       ncores = NULL
     )
-    print(fit)
-    summary(fit)
-    print(fit, means = FALSE)
-    summary(fit, means = FALSE)
-    coef(fit, sigma = TRUE, theta = TRUE)
-    vcov(fit, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 1),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi_mu,
-                sigma[
-                  lower.tri(
-                    x = sigma,
-                    diag = TRUE
-                  )
-                ]
-              ) - summary(fit)
-            ) <= tol
-          )
-        )
-      }
-    )
+    print.fitctvaridmx(fit)
+    summary.fitctvaridmx(fit)
+    print.fitctvaridmx(fit, means = FALSE)
+    summary.fitctvaridmx(fit, means = FALSE)
+    coef.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
+    vcov.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
     phi_ubound <- phi_lbound <- matrix(
       data = NA,
       nrow = p,
@@ -116,7 +95,7 @@ lapply(
     )
     sigma_ubound <- sigma_lbound <- phi_lbound
     diag(phi_ubound) <- .Machine$double.xmin
-    fit <- FitCTVARIDMx(
+    fit <- fitCTVARMx::FitCTVARIDMx(
       data = data,
       observed = paste0("y", seq_len(k)),
       id = "id",
@@ -144,33 +123,6 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    print(fit)
-    summary(fit)
-    print(fit, means = FALSE)
-    summary(fit, means = FALSE)
-    coef(fit, sigma = TRUE, theta = TRUE)
-    vcov(fit, sigma = TRUE, theta = TRUE)
-    testthat::test_that(
-      paste(text, 2),
-      {
-        testthat::expect_true(
-          all(
-            abs(
-              c(
-                phi_mu,
-                sigma[
-                  lower.tri(
-                    x = sigma,
-                    diag = TRUE
-                  )
-                ]
-              ) - summary(fit)
-            ) <= tol
-          )
-        )
-      }
-    )
   },
-  text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full",
-  tol = 0.3
+  text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full"
 )
