@@ -133,12 +133,6 @@ lapply(
       try = 1000,
       ncores = NULL
     )
-    print.fitctvaridmx(fit)
-    summary.fitctvaridmx(fit)
-    print.fitctvaridmx(fit, means = FALSE)
-    summary.fitctvaridmx(fit, means = FALSE)
-    coef.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
-    vcov.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 2),
       {
