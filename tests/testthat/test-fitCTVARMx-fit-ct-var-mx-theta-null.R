@@ -67,8 +67,8 @@ lapply(
     summary.fitctvarmx(fit)
     print.fitctvarmx(fit, means = FALSE)
     summary.fitctvarmx(fit, means = FALSE)
-    coef.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
-    vcov.fitctvarmx(fit, sigma = TRUE, theta = TRUE)
+    coef.fitctvarmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    vcov.fitctvarmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 1),
       {

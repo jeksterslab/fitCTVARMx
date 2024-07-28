@@ -197,6 +197,17 @@ lapply(
       theta_fixed = FALSE,
       ncores = NULL
     )
+    fitCTVARMx::FitCTVARIDMx(
+      data = data,
+      observed = paste0("y", seq_len(k)),
+      id = "id",
+      time = "time",
+      iota_fixed = TRUE,
+      iota_start = iota_start,
+      sigma_diag = FALSE,
+      theta_fixed = FALSE,
+      ncores = NULL
+    )
   },
   text = "test-fitCTVARMx-fit-ct-var-id-mx-sigma-full-iota",
   tol = 1
