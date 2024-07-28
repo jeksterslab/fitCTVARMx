@@ -88,8 +88,8 @@ lapply(
     summary.fitctvaridmx(fit)
     print.fitctvaridmx(fit, means = FALSE)
     summary.fitctvaridmx(fit, means = FALSE)
-    coef.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
-    vcov.fitctvaridmx(fit, sigma = TRUE, theta = TRUE)
+    coef.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
+    vcov.fitctvaridmx(fit, iota = TRUE, sigma = TRUE, theta = TRUE)
     testthat::test_that(
       paste(text, 1),
       {
