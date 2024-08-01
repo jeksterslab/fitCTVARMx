@@ -12,7 +12,8 @@
                            sigma0,
                            covariate,
                            try = 1000,
-                           ncores = NULL) {
+                           ncores = NULL,
+                           ...) {
   ids <- sort(
     unique(data[, id])
   )
@@ -56,12 +57,14 @@
           type = "raw"
         )
       ),
-      extraTries = try
+      extraTries = try,
+      ...
     )
     if (out@output[["status"]][["code"]] > 1) {
       out <- OpenMx::mxTryHardctsem(
         model = out,
-        extraTries = try
+        extraTries = try,
+        ...
       )
       if (out@output[["status"]][["code"]] > 1) {
         warning(

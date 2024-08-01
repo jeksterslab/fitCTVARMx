@@ -13,7 +13,8 @@
                          covariate,
                          try = 1000,
                          ncores = NULL,
-                         byid = TRUE) {
+                         byid = TRUE,
+                         ...) {
   if (byid) {
     return(
       .FitCTVARRunID(
@@ -31,7 +32,8 @@
         sigma0 = sigma0,
         covariate = covariate,
         try = try,
-        ncores = ncores
+        ncores = ncores,
+        ...
       )
     )
   } else {
@@ -51,7 +53,8 @@
         sigma0 = sigma0,
         covariate = covariate,
         try = try,
-        ncores = ncores
+        ncores = ncores,
+        ...
       )
     )
   }

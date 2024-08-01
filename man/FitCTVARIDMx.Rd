@@ -34,7 +34,8 @@ FitCTVARIDMx(
   sigma0_lbound = NULL,
   sigma0_ubound = NULL,
   try = 1000,
-  ncores = NULL
+  ncores = NULL,
+  ...
 )
 }
 \arguments{
@@ -154,6 +155,8 @@ Number of extra optimization tries.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.}
+
+\item{...}{Additional optional arguments to pass to \code{mxTryHard}.}
 }
 \description{
 Fit the First Order Continuous-Time Vector Autoregressive Model by ID

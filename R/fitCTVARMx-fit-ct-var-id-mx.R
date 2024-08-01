@@ -89,6 +89,7 @@
 #'   Number of extra optimization tries.
 #' @param ncores Positive integer.
 #'   Number of cores to use.
+#' @param ... Additional optional arguments to pass to `mxTryHard`.
 #'
 #' @examples
 #' \dontrun{
@@ -186,7 +187,8 @@ FitCTVARIDMx <- function(data,
                          sigma0_lbound = NULL,
                          sigma0_ubound = NULL,
                          try = 1000,
-                         ncores = NULL) {
+                         ncores = NULL,
+                         ...) {
   byid <- TRUE
   args <- list(
     data = data,
@@ -219,7 +221,8 @@ FitCTVARIDMx <- function(data,
     sigma0_ubound = sigma0_ubound,
     try = try,
     ncores = ncores,
-    byid = byid
+    byid = byid,
+    ...
   )
   output <- .FitCTVAR(
     data = data,
@@ -252,7 +255,8 @@ FitCTVARIDMx <- function(data,
     sigma0_ubound = sigma0_ubound,
     try = try,
     ncores = ncores,
-    byid = byid
+    byid = byid,
+    ...
   )
   out <- list(
     call = match.call(),
