@@ -1,4 +1,4 @@
-pandoc: 3.2.1
+pandoc: '3.3'
 pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   fit-ct-var: fit-ct-var.html
   fitCTVARMx: fitCTVARMx.html
   session: session.html
-last_built: 2024-07-28T00:59Z
+last_built: 2024-08-01T22:17Z
 urls:
   reference: https://github.com/jeksterslab/fitCTVARMx/reference
   article: https://github.com/jeksterslab/fitCTVARMx/articles
