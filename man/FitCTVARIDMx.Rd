@@ -156,7 +156,7 @@ Number of extra optimization tries.}
 \item{ncores}{Positive integer.
 Number of cores to use.}
 
-\item{...}{Additional optional arguments to pass to \code{mxTryHard}.}
+\item{...}{Additional optional arguments to pass to \code{mxTryHardctsem}.}
 }
 \description{
 Fit the First Order Continuous-Time Vector Autoregressive Model by ID
