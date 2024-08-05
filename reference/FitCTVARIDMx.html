@@ -47,27 +47,27 @@
 <span>  <span class="va">id</span>,</span>
 <span>  <span class="va">time</span>,</span>
 <span>  iota_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  iota_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  iota_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  iota_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  iota_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  phi_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  phi_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phi_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  phi_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma_diag <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  sigma_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  sigma_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  theta_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  theta_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  theta_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mu0_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  mu0_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mu0_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mu0_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mu0_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma0_fixed <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  sigma0_diag <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  sigma0_start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  sigma0_values <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma0_lbound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sigma0_ubound <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  try <span class="op">=</span> <span class="fl">1000</span>,</span>
@@ -113,12 +113,12 @@ If <code>iota_fixed = FALSE</code>,
 the dynamic model intercept vector <code>iota</code> is estimated.</p></dd>
 
 
-<dt id="arg-iota-start">iota_start<a class="anchor" aria-label="anchor" href="#arg-iota-start"></a></dt>
+<dt id="arg-iota-values">iota_values<a class="anchor" aria-label="anchor" href="#arg-iota-values"></a></dt>
 <dd><p>Optional starting values for <code>iota</code>.
 If <code>iota_fixed = TRUE</code>,
-<code>iota_start</code> will be used as fixed values.
+<code>iota_values</code> will be used as fixed values.
 If <code>iota_fixed = FALSE</code>,
-<code>iota_start</code> will be used as starting values.</p></dd>
+<code>iota_values</code> will be used as starting values.</p></dd>
 
 
 <dt id="arg-iota-lbound">iota_lbound<a class="anchor" aria-label="anchor" href="#arg-iota-lbound"></a></dt>
@@ -131,7 +131,7 @@ Ignored if <code>iota_fixed = TRUE</code>.</p></dd>
 Ignored if <code>iota_fixed = TRUE</code>.</p></dd>
 
 
-<dt id="arg-phi-start">phi_start<a class="anchor" aria-label="anchor" href="#arg-phi-start"></a></dt>
+<dt id="arg-phi-values">phi_values<a class="anchor" aria-label="anchor" href="#arg-phi-values"></a></dt>
 <dd><p>Numeric matrix.
 Optional starting values for <code>phi</code>.</p></dd>
 
@@ -152,7 +152,7 @@ If <code>sigma_diag = TRUE</code>,
 <code>sigma</code> is a diagonal matrix.</p></dd>
 
 
-<dt id="arg-sigma-start">sigma_start<a class="anchor" aria-label="anchor" href="#arg-sigma-start"></a></dt>
+<dt id="arg-sigma-values">sigma_values<a class="anchor" aria-label="anchor" href="#arg-sigma-values"></a></dt>
 <dd><p>Numeric matrix.
 Optional starting values for <code>sigma</code>.</p></dd>
 
@@ -174,7 +174,7 @@ If <code>theta_fixed = FALSE</code>,
 estimate the diagonal measurement error matrix <code>theta</code>.</p></dd>
 
 
-<dt id="arg-theta-start">theta_start<a class="anchor" aria-label="anchor" href="#arg-theta-start"></a></dt>
+<dt id="arg-theta-values">theta_values<a class="anchor" aria-label="anchor" href="#arg-theta-values"></a></dt>
 <dd><p>Optional starting values for <code>theta</code>.
 Ignored if <code>theta_fixed = TRUE</code>.</p></dd>
 
@@ -197,12 +197,12 @@ If <code>mu0_fixed = FALSE</code>,
 initial mean vector <code>mu0</code> is estimated.</p></dd>
 
 
-<dt id="arg-mu-start">mu0_start<a class="anchor" aria-label="anchor" href="#arg-mu-start"></a></dt>
+<dt id="arg-mu-values">mu0_values<a class="anchor" aria-label="anchor" href="#arg-mu-values"></a></dt>
 <dd><p>Optional starting values for <code>mu0</code>.
 If <code>mu0_fixed = TRUE</code>,
-<code>mu0_start</code> will be used as fixed values.
+<code>mu0_values</code> will be used as fixed values.
 If <code>mu0_fixed = FALSE</code>,
-<code>mu0_start</code> will be used as starting values.</p></dd>
+<code>mu0_values</code> will be used as starting values.</p></dd>
 
 
 <dt id="arg-mu-lbound">mu0_lbound<a class="anchor" aria-label="anchor" href="#arg-mu-lbound"></a></dt>
@@ -229,12 +229,12 @@ If <code>sigma0_diag = TRUE</code>,
 <code>sigma0</code> is a diagonal matrix.</p></dd>
 
 
-<dt id="arg-sigma-start">sigma0_start<a class="anchor" aria-label="anchor" href="#arg-sigma-start"></a></dt>
+<dt id="arg-sigma-values">sigma0_values<a class="anchor" aria-label="anchor" href="#arg-sigma-values"></a></dt>
 <dd><p>Optional starting values for <code>sigma0</code>.
 If <code>sigma0_fixed = TRUE</code>,
-<code>sigma0_start</code> will be used as fixed values.
+<code>sigma0_values</code> will be used as fixed values.
 If <code>sigma0_fixed = FALSE</code>,
-<code>sigma0_start</code> will be used as starting values.</p></dd>
+<code>sigma0_values</code> will be used as starting values.</p></dd>
 
 
 <dt id="arg-sigma-lbound">sigma0_lbound<a class="anchor" aria-label="anchor" href="#arg-sigma-lbound"></a></dt>
