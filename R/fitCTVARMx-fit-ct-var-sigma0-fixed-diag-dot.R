@@ -1,19 +1,19 @@
 .FitCTVARSigma0FixedDiag <- function(k,
-                                     sigma0_start = NULL) {
-  # sigma0_start will be the fixed value
+                                     sigma0_values = NULL) {
+  # sigma0_values will be the fixed value
   # R0
   # initial condition
   # covariance
   # nocov start
-  if (is.null(sigma0_start)) {
-    sigma0_start <- diag(k)
+  if (is.null(sigma0_values)) {
+    sigma0_values <- diag(k)
   } else {
-    if (is.matrix(sigma0_start)) {
-      sigma0_start <- diag(sigma0_start)
+    if (is.matrix(sigma0_values)) {
+      sigma0_values <- diag(sigma0_values)
     }
     stopifnot(
-      is.vector(sigma0_start),
-      length(sigma0_start) == k
+      is.vector(sigma0_values),
+      length(sigma0_values) == k
     )
   }
   return(
@@ -22,7 +22,7 @@
       nrow = k,
       ncol = k,
       free = FALSE,
-      values = sigma0_start,
+      values = sigma0_values,
       labels = NA,
       lbound = NA,
       ubound = NA,

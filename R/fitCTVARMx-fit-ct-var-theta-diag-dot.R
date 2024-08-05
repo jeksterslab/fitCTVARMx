@@ -1,23 +1,23 @@
 .FitCTVARThetaDiag <- function(k,
                                idx,
                                observed,
-                               theta_start = NULL,
+                               theta_values = NULL,
                                theta_lbound = NULL,
                                theta_ubound = NULL) {
   # R
   # measurement error
-  if (is.null(theta_start)) {
-    theta_start <- rep(
+  if (is.null(theta_values)) {
+    theta_values <- rep(
       x = 0.10,
       times = k
     )
   } else {
-    if (is.matrix(theta_start)) {
-      theta_start <- diag(theta_start)
+    if (is.matrix(theta_values)) {
+      theta_values <- diag(theta_values)
     }
     stopifnot(
-      is.vector(theta_start),
-      length(theta_start) == k
+      is.vector(theta_values),
+      length(theta_values) == k
     )
   }
   theta_labels <- paste0(
@@ -59,7 +59,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = theta_start,
+      values = theta_values,
       labels = theta_labels,
       lbound = theta_lbound,
       ubound = theta_ubound,

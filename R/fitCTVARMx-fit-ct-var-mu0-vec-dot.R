@@ -1,30 +1,30 @@
 .FitCTVARMu0Vec <- function(k,
                             idx,
                             statenames,
-                            mu0_start = NULL,
+                            mu0_values = NULL,
                             mu0_lbound = NULL,
                             mu0_ubound = NULL) {
   # x0
   # initial condition
   # mean
   # nocov start
-  if (is.null(mu0_start)) {
-    mu0_start <- matrix(
+  if (is.null(mu0_values)) {
+    mu0_values <- matrix(
       data = 0,
       nrow = k,
       ncol = 1
     )
   } else {
-    if (is.vector(mu0_start)) {
-      mu0_start <- matrix(
-        data = mu0_start,
+    if (is.vector(mu0_values)) {
+      mu0_values <- matrix(
+        data = mu0_values,
         nrow = k,
         ncol = 1
       )
     } else {
       stopifnot(
-        is.matrix(mu0_start),
-        dim(mu0_start) == c(k, 1)
+        is.matrix(mu0_values),
+        dim(mu0_values) == c(k, 1)
       )
     }
   }
@@ -74,7 +74,7 @@
       nrow = k,
       ncol = 1,
       free = TRUE,
-      values = mu0_start,
+      values = mu0_values,
       labels = paste0("mu0_", idx),
       lbound = mu0_lbound,
       ubound = mu0_ubound,

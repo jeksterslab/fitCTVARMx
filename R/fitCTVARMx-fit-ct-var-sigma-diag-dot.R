@@ -1,23 +1,23 @@
 .FitCTVARSigmaDiag <- function(k,
                                idx,
                                statenames,
-                               sigma_start = NULL,
+                               sigma_values = NULL,
                                sigma_lbound = NULL,
                                sigma_ubound = NULL) {
   # Q
   # process noise
-  if (is.null(sigma_start)) {
-    sigma_start <- rep(
+  if (is.null(sigma_values)) {
+    sigma_values <- rep(
       x = 0.10,
       times = k
     )
   } else {
-    if (is.matrix(sigma_start)) {
-      sigma_start <- diag(sigma_start)
+    if (is.matrix(sigma_values)) {
+      sigma_values <- diag(sigma_values)
     }
     stopifnot(
-      is.vector(sigma_start),
-      length(sigma_start) == k
+      is.vector(sigma_values),
+      length(sigma_values) == k
     )
   }
   sigma_labels <- paste0(
@@ -61,7 +61,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = sigma_start,
+      values = sigma_values,
       labels = sigma_labels,
       lbound = sigma_lbound,
       ubound = sigma_ubound,

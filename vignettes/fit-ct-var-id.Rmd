@@ -1,7 +1,7 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model By ID"
 author: Ivan Jacob Agaloos Pesigan
-date: "2024-08-02"
+date: "2024-08-05"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
