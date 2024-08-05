@@ -1,18 +1,18 @@
 .FitCTVARSigma0Full <- function(k,
                                 idx,
-                                sigma0_start = NULL,
+                                sigma0_values = NULL,
                                 sigma0_lbound = NULL,
                                 sigma0_ubound = NULL) {
   # R0
   # initial condition
   # covariance
   # nocov start
-  if (is.null(sigma0_start)) {
-    sigma0_start <- diag(k)
+  if (is.null(sigma0_values)) {
+    sigma0_values <- diag(k)
   } else {
     stopifnot(
-      is.matrix(sigma0_start),
-      dim(sigma0_start) == c(k, k)
+      is.matrix(sigma0_values),
+      dim(sigma0_values) == c(k, k)
     )
   }
   sigma0_labels <- matrix(
@@ -56,10 +56,10 @@
     )
   }
   # make sure matrices are symmetric
-  sigma0_start[
-    upper.tri(sigma0_start)
-  ] <- t(sigma0_start)[
-    upper.tri(sigma0_start)
+  sigma0_values[
+    upper.tri(sigma0_values)
+  ] <- t(sigma0_values)[
+    upper.tri(sigma0_values)
   ]
   sigma0_labels[
     upper.tri(sigma0_labels)
@@ -82,7 +82,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = sigma0_start,
+      values = sigma0_values,
       labels = sigma0_labels,
       lbound = sigma0_lbound,
       ubound = sigma0_ubound,

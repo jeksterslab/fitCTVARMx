@@ -2,7 +2,7 @@
                            idx,
                            statenames,
                            sigma_diag = TRUE,
-                           sigma_start = NULL,
+                           sigma_values = NULL,
                            sigma_lbound = NULL,
                            sigma_ubound = NULL) {
   # Q
@@ -13,7 +13,7 @@
         k = k,
         idx = idx,
         statenames = statenames,
-        sigma_start = sigma_start,
+        sigma_values = sigma_values,
         sigma_lbound = sigma_lbound,
         sigma_ubound = sigma_ubound
       )
@@ -24,7 +24,7 @@
         k = k,
         idx = idx,
         statenames = statenames,
-        sigma_start = sigma_start,
+        sigma_values = sigma_values,
         sigma_lbound = sigma_lbound,
         sigma_ubound = sigma_ubound
       )

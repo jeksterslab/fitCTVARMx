@@ -1,17 +1,17 @@
 .FitCTVARPhi <- function(k,
                          idx,
                          statenames,
-                         phi_start = NULL,
+                         phi_values = NULL,
                          phi_lbound = NULL,
                          phi_ubound = NULL) {
   # A
   # auto regression and cross regression coefficients
-  if (is.null(phi_start)) {
-    phi_start <- 0.10 * diag(k)
+  if (is.null(phi_values)) {
+    phi_values <- 0.10 * diag(k)
   } else {
     stopifnot(
-      is.matrix(phi_start),
-      dim(phi_start) == c(k, k)
+      is.matrix(phi_values),
+      dim(phi_values) == c(k, k)
     )
   }
   phi_labels <- matrix(
@@ -56,7 +56,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = phi_start,
+      values = phi_values,
       labels = phi_labels,
       lbound = phi_lbound,
       ubound = phi_ubound,

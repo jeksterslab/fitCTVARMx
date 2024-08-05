@@ -1,24 +1,24 @@
 .FitCTVARSigma0Diag <- function(k,
                                 idx,
-                                sigma0_start = NULL,
+                                sigma0_values = NULL,
                                 sigma0_lbound = NULL,
                                 sigma0_ubound = NULL) {
   # R0
   # initial condition
   # covariance
   # nocov start
-  if (is.null(sigma0_start)) {
-    sigma0_start <- rep(
+  if (is.null(sigma0_values)) {
+    sigma0_values <- rep(
       x = 1,
       times = k
     )
   } else {
-    if (is.matrix(sigma0_start)) {
-      sigma0_start <- diag(sigma0_start)
+    if (is.matrix(sigma0_values)) {
+      sigma0_values <- diag(sigma0_values)
     }
     stopifnot(
-      is.vector(sigma0_start),
-      length(sigma0_start) == k
+      is.vector(sigma0_values),
+      length(sigma0_values) == k
     )
   }
   sigma0_labels <- paste0(
@@ -62,7 +62,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = sigma0_start,
+      values = sigma0_values,
       labels = sigma0_labels,
       lbound = sigma0_lbound,
       ubound = sigma0_ubound,

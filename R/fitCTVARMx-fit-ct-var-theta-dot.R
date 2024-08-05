@@ -2,7 +2,7 @@
                            idx,
                            observed,
                            theta_fixed = TRUE,
-                           theta_start = NULL,
+                           theta_values = NULL,
                            theta_lbound = NULL,
                            theta_ubound = NULL) {
   # R
@@ -20,7 +20,7 @@
         k = k,
         idx = idx,
         observed = observed,
-        theta_start = theta_start,
+        theta_values = theta_values,
         theta_lbound = theta_lbound,
         theta_ubound = theta_ubound
       )

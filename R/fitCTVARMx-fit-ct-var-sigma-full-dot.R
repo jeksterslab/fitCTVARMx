@@ -1,17 +1,17 @@
 .FitCTVARSigmaFull <- function(k,
                                idx,
                                statenames,
-                               sigma_start = NULL,
+                               sigma_values = NULL,
                                sigma_lbound = NULL,
                                sigma_ubound = NULL) {
   # Q
   # process noise
-  if (is.null(sigma_start)) {
-    sigma_start <- 0.10 * diag(k)
+  if (is.null(sigma_values)) {
+    sigma_values <- 0.10 * diag(k)
   } else {
     stopifnot(
-      is.matrix(sigma_start),
-      dim(sigma_start) == c(k, k)
+      is.matrix(sigma_values),
+      dim(sigma_values) == c(k, k)
     )
   }
   sigma_labels <- matrix(
@@ -54,10 +54,10 @@
     )
   }
   # make sure matrices are symmetric
-  sigma_start[
-    upper.tri(sigma_start)
-  ] <- t(sigma_start)[
-    upper.tri(sigma_start)
+  sigma_values[
+    upper.tri(sigma_values)
+  ] <- t(sigma_values)[
+    upper.tri(sigma_values)
   ]
   sigma_labels[
     upper.tri(sigma_labels)
@@ -80,7 +80,7 @@
       nrow = k,
       ncol = k,
       free = TRUE,
-      values = sigma_start,
+      values = sigma_values,
       labels = sigma_labels,
       lbound = sigma_lbound,
       ubound = sigma_ubound,

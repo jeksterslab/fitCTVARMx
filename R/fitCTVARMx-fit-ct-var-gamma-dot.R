@@ -1,13 +1,13 @@
 .FitCTVARGamma <- function(k,
                            idx,
                            iota_fixed = TRUE,
-                           iota_start = NULL,
+                           iota_values = NULL,
                            iota_lbound = NULL,
                            iota_ubound = NULL) {
   # B
   # latent variables on covariates
   if (iota_fixed) {
-    if (is.null(iota_start)) {
+    if (is.null(iota_values)) {
       return(
         OpenMx::mxMatrix(
           type = "Zero",
@@ -23,30 +23,30 @@
           nrow = k,
           ncol = 1,
           free = FALSE,
-          values = iota_start,
+          values = iota_values,
           byrow = FALSE,
           name = "gamma"
         )
       )
     }
   } else {
-    if (is.null(iota_start)) {
-      iota_start <- matrix(
+    if (is.null(iota_values)) {
+      iota_values <- matrix(
         data = 0,
         nrow = k,
         ncol = 1
       )
     } else {
-      if (is.vector(iota_start)) {
-        iota_start <- matrix(
-          data = iota_start,
+      if (is.vector(iota_values)) {
+        iota_values <- matrix(
+          data = iota_values,
           nrow = k,
           ncol = 1
         )
       } else {
         stopifnot(
-          is.matrix(iota_start),
-          dim(iota_start) == c(k, 1)
+          is.matrix(iota_values),
+          dim(iota_values) == c(k, 1)
         )
       }
     }
@@ -96,7 +96,7 @@
         nrow = k,
         ncol = 1,
         free = TRUE,
-        values = iota_start,
+        values = iota_values,
         labels = paste0("iota_", idx),
         lbound = iota_lbound,
         ubound = iota_ubound,

@@ -10,27 +10,27 @@ FitCTVARIDMx(
   id,
   time,
   iota_fixed = TRUE,
-  iota_start = NULL,
+  iota_values = NULL,
   iota_lbound = NULL,
   iota_ubound = NULL,
-  phi_start = NULL,
+  phi_values = NULL,
   phi_lbound = NULL,
   phi_ubound = NULL,
   sigma_diag = TRUE,
-  sigma_start = NULL,
+  sigma_values = NULL,
   sigma_lbound = NULL,
   sigma_ubound = NULL,
   theta_fixed = TRUE,
-  theta_start = NULL,
+  theta_values = NULL,
   theta_lbound = NULL,
   theta_ubound = NULL,
   mu0_fixed = TRUE,
-  mu0_start = NULL,
+  mu0_values = NULL,
   mu0_lbound = NULL,
   mu0_ubound = NULL,
   sigma0_fixed = TRUE,
   sigma0_diag = TRUE,
-  sigma0_start = NULL,
+  sigma0_values = NULL,
   sigma0_lbound = NULL,
   sigma0_ubound = NULL,
   try = 1000,
@@ -62,11 +62,11 @@ the dynamic model intercept vector \code{iota} is fixed at zero.
 If \code{iota_fixed = FALSE},
 the dynamic model intercept vector \code{iota} is estimated.}
 
-\item{iota_start}{Optional starting values for \code{iota}.
+\item{iota_values}{Optional starting values for \code{iota}.
 If \code{iota_fixed = TRUE},
-\code{iota_start} will be used as fixed values.
+\code{iota_values} will be used as fixed values.
 If \code{iota_fixed = FALSE},
-\code{iota_start} will be used as starting values.}
+\code{iota_values} will be used as starting values.}
 
 \item{iota_lbound}{Optional lower bound for \code{iota}.
 Ignored if \code{iota_fixed = TRUE}.}
@@ -74,7 +74,7 @@ Ignored if \code{iota_fixed = TRUE}.}
 \item{iota_ubound}{Optional upper bound for \code{iota}.
 Ignored if \code{iota_fixed = TRUE}.}
 
-\item{phi_start}{Numeric matrix.
+\item{phi_values}{Numeric matrix.
 Optional starting values for \code{phi}.}
 
 \item{phi_lbound}{Numeric matrix.
@@ -87,7 +87,7 @@ Optional upper bound for \code{phi}.}
 If \code{sigma_diag = TRUE},
 \code{sigma} is a diagonal matrix.}
 
-\item{sigma_start}{Numeric matrix.
+\item{sigma_values}{Numeric matrix.
 Optional starting values for \code{sigma}.}
 
 \item{sigma_lbound}{Numeric matrix.
@@ -101,7 +101,7 @@ the measurement error matrix \code{theta} is fixed to zero.
 If \code{theta_fixed = FALSE},
 estimate the diagonal measurement error matrix \code{theta}.}
 
-\item{theta_start}{Optional starting values for \code{theta}.
+\item{theta_values}{Optional starting values for \code{theta}.
 Ignored if \code{theta_fixed = TRUE}.}
 
 \item{theta_lbound}{Optional lower bound for \code{theta}.
@@ -116,11 +116,11 @@ initial mean vector \code{mu0} is fixed.
 If \code{mu0_fixed = FALSE},
 initial mean vector \code{mu0} is estimated.}
 
-\item{mu0_start}{Optional starting values for \code{mu0}.
+\item{mu0_values}{Optional starting values for \code{mu0}.
 If \code{mu0_fixed = TRUE},
-\code{mu0_start} will be used as fixed values.
+\code{mu0_values} will be used as fixed values.
 If \code{mu0_fixed = FALSE},
-\code{mu0_start} will be used as starting values.}
+\code{mu0_values} will be used as starting values.}
 
 \item{mu0_lbound}{Optional lower bound for \code{mu0}.
 Ignored if \code{mu0_fixed = TRUE}.}
@@ -138,11 +138,11 @@ initial mean vector \code{sigma0} is estimated.}
 If \code{sigma0_diag = TRUE},
 \code{sigma0} is a diagonal matrix.}
 
-\item{sigma0_start}{Optional starting values for \code{sigma0}.
+\item{sigma0_values}{Optional starting values for \code{sigma0}.
 If \code{sigma0_fixed = TRUE},
-\code{sigma0_start} will be used as fixed values.
+\code{sigma0_values} will be used as fixed values.
 If \code{sigma0_fixed = FALSE},
-\code{sigma0_start} will be used as starting values.}
+\code{sigma0_values} will be used as starting values.}
 
 \item{sigma0_lbound}{Optional lower bound for \code{sigma0}.
 Ignored if \code{sigma0_fixed = TRUE}.}
