@@ -59,7 +59,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2024-08-08</h4>
+            <h4 data-toc-skip class="date">2024-08-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/fitCTVARMx/blob/main/vignettes/fit-ct-var-id.Rmd"><code>vignettes/fit-ct-var-id.Rmd</code></a></small>
       <div class="d-none name"><code>fit-ct-var-id.Rmd</code></div>
@@ -172,9 +172,9 @@ fluctuations.</p>
 <h3 id="notation">Notation<a class="anchor" aria-label="anchor" href="#notation"></a>
 </h3>
 <p>Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">t = 1000</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">t = 500</annotation></semantics></math>
 be the number of time points and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">n = 100</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n = 10</annotation></semantics></math>
 be the number of individuals.</p>
 <p>Let the measurement model intecept vector
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛎</mi><annotation encoding="application/x-tex">\boldsymbol{\nu}</annotation></semantics></math>
@@ -207,14 +207,14 @@ be given by</p>
 <p>Let the measurement error covariance matrix
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝚯</mi><annotation encoding="application/x-tex">\boldsymbol{\Theta}</annotation></semantics></math>
 be given by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝚯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝚯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
 \boldsymbol{\Theta}
 =
 \left(
 \begin{array}{ccc}
-  0 &amp; 0 &amp; 0 \\
-  0 &amp; 0 &amp; 0 \\
-  0 &amp; 0 &amp; 0 \\
+  0.2 &amp; 0 &amp; 0 \\
+  0 &amp; 0.2 &amp; 0 \\
+  0 &amp; 0 &amp; 0.2 \\
 \end{array}
 \right) .
 \end{equation}</annotation></semantics></math></p>
@@ -314,9 +314,9 @@ be given by</p>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span></span>
-<span><span class="co">#&gt; [1] 100</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
 <span><span class="va">time</span></span>
-<span><span class="co">#&gt; [1] 1000</span></span>
+<span><span class="co">#&gt; [1] 500</span></span>
 <span><span class="va">delta_t</span></span>
 <span><span class="co">#&gt; [1] 0.1</span></span>
 <span><span class="va">mu0</span></span>
@@ -364,15 +364,15 @@ be given by</p>
 <span><span class="co">#&gt; [3,]    0    0    1</span></span>
 <span><span class="va">theta</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span><span class="co">#&gt; [1,]    0    0    0</span></span>
-<span><span class="co">#&gt; [2,]    0    0    0</span></span>
-<span><span class="co">#&gt; [3,]    0    0    0</span></span>
+<span><span class="co">#&gt; [1,]  0.2  0.0  0.0</span></span>
+<span><span class="co">#&gt; [2,]  0.0  0.2  0.0</span></span>
+<span><span class="co">#&gt; [3,]  0.0  0.0  0.2</span></span>
 <span><span class="va">theta_l</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span><span class="co">#&gt; [1,]    0    0    0</span></span>
-<span><span class="co">#&gt; [2,]    0    0    0</span></span>
-<span><span class="co">#&gt; [3,]    0    0    0</span></span></code></pre></div>
+<span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span><span class="co">#&gt; [1,] 0.4472136 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; [2,] 0.0000000 0.4472136 0.0000000</span></span>
+<span><span class="co">#&gt; [3,] 0.0000000 0.0000000 0.4472136</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualizing-the-dynamics-without-process-noise-n-5-with-different-initial-condition">Visualizing the Dynamics Without Process Noise (n = 5 with Different
@@ -401,13 +401,13 @@ Initial Condition)<a class="anchor" aria-label="anchor" href="#visualizing-the-d
 <span><span class="op">)</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   id time        y1         y2        y3</span></span>
-<span><span class="co">#&gt; 1  1  0.0 -1.407144 -0.3703871 -1.005882</span></span>
-<span><span class="co">#&gt; 2  1  0.1 -1.372881 -0.4764856 -1.058330</span></span>
-<span><span class="co">#&gt; 3  1  0.2 -1.290353 -0.5443476 -1.018862</span></span>
-<span><span class="co">#&gt; 4  1  0.3 -1.239194 -0.7836783 -1.072401</span></span>
-<span><span class="co">#&gt; 5  1  0.4 -1.110661 -0.9018310 -1.060215</span></span>
-<span><span class="co">#&gt; 6  1  0.5 -1.198872 -0.8450478 -1.084714</span></span>
+<span><span class="co">#&gt;   id time         y1         y2         y3</span></span>
+<span><span class="co">#&gt; 1  1  0.0 -0.9066322  0.2077655 -0.1532395</span></span>
+<span><span class="co">#&gt; 2  1  0.1 -2.0187881  0.1100828  1.5700524</span></span>
+<span><span class="co">#&gt; 3  1  0.2 -1.9509792  0.7388884  0.6062416</span></span>
+<span><span class="co">#&gt; 4  1  0.3 -0.7648885 -0.3710951  0.6992641</span></span>
+<span><span class="co">#&gt; 5  1  0.4 -1.9989218 -1.4027964 -0.1971148</span></span>
+<span><span class="co">#&gt; 6  1  0.5 -1.7412161 -0.2356327 -0.4460133</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-fit-ct-var-id-mx-error-1.png" width="3300"><img src="fig-vignettes-fit-ct-var-id-mx-error-2.png" width="3300"><img src="fig-vignettes-fit-ct-var-id-mx-error-3.png" width="3300"></p>
 </div>
@@ -425,15 +425,18 @@ individual
 <span>  observed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  id <span class="op">=</span> <span class="st">"id"</span>,</span>
 <span>  time <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>  theta_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">fit</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Means of the estimated paramaters per individual.</span></span>
 <span><span class="co">#&gt;       phi_11       phi_21       phi_31       phi_12       phi_22       phi_32 </span></span>
-<span><span class="co">#&gt; -0.405740018  0.777807791 -0.457255643  0.000949408 -0.549470908  0.724583368 </span></span>
+<span><span class="co">#&gt; -0.329091189  0.851689092 -0.507551362  0.015917202 -0.509584686  1.032802799 </span></span>
 <span><span class="co">#&gt;       phi_13       phi_23       phi_33     sigma_11     sigma_22     sigma_33 </span></span>
-<span><span class="co">#&gt;  0.003763113 -0.013551647 -0.735826877  0.099096944  0.099638843  0.100193412</span></span></code></pre></div>
+<span><span class="co">#&gt;  0.007716078  0.033385190 -1.017327464  0.100409860  0.101391404  0.121158245 </span></span>
+<span><span class="co">#&gt;     theta_11     theta_22     theta_33 </span></span>
+<span><span class="co">#&gt;  0.200496451  0.193508168  0.197870476</span></span></code></pre></div>
 </div>
 <div class="section level2 unnumbered">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

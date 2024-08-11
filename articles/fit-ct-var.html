@@ -59,7 +59,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2024-08-08</h4>
+            <h4 data-toc-skip class="date">2024-08-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/fitCTVARMx/blob/main/vignettes/fit-ct-var.Rmd"><code>vignettes/fit-ct-var.Rmd</code></a></small>
       <div class="d-none name"><code>fit-ct-var.Rmd</code></div>
@@ -172,9 +172,9 @@ fluctuations.</p>
 <h3 id="notation">Notation<a class="anchor" aria-label="anchor" href="#notation"></a>
 </h3>
 <p>Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">t = 1000</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">t = 500</annotation></semantics></math>
 be the number of time points and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">n = 100</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">n = 10</annotation></semantics></math>
 be the number of individuals.</p>
 <p>Let the measurement model intecept vector
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛎</mi><annotation encoding="application/x-tex">\boldsymbol{\nu}</annotation></semantics></math>
@@ -207,14 +207,14 @@ be given by</p>
 <p>Let the measurement error covariance matrix
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝚯</mi><annotation encoding="application/x-tex">\boldsymbol{\Theta}</annotation></semantics></math>
 be given by</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝚯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝚯</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0.2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{equation}
 \boldsymbol{\Theta}
 =
 \left(
 \begin{array}{ccc}
-  0 &amp; 0 &amp; 0 \\
-  0 &amp; 0 &amp; 0 \\
-  0 &amp; 0 &amp; 0 \\
+  0.2 &amp; 0 &amp; 0 \\
+  0 &amp; 0.2 &amp; 0 \\
+  0 &amp; 0 &amp; 0.2 \\
 \end{array}
 \right) .
 \end{equation}</annotation></semantics></math></p>
@@ -296,9 +296,9 @@ be given by</p>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span></span>
-<span><span class="co">#&gt; [1] 100</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
 <span><span class="va">time</span></span>
-<span><span class="co">#&gt; [1] 1000</span></span>
+<span><span class="co">#&gt; [1] 500</span></span>
 <span><span class="va">delta_t</span></span>
 <span><span class="co">#&gt; [1] 0.1</span></span>
 <span><span class="va">mu0</span></span>
@@ -329,9 +329,9 @@ be given by</p>
 <span><span class="co">#&gt; [3,]    0    0    1</span></span>
 <span><span class="va">theta</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
-<span><span class="co">#&gt; [1,]    0    0    0</span></span>
-<span><span class="co">#&gt; [2,]    0    0    0</span></span>
-<span><span class="co">#&gt; [3,]    0    0    0</span></span></code></pre></div>
+<span><span class="co">#&gt; [1,]  0.2  0.0  0.0</span></span>
+<span><span class="co">#&gt; [2,]  0.0  0.2  0.0</span></span>
+<span><span class="co">#&gt; [3,]  0.0  0.0  0.2</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualizing-the-dynamics-without-measurement-error-and-process-noise-n-5-with-different-initial-condition">Visualizing the Dynamics Without Measurement Error and Process Noise
@@ -361,13 +361,13 @@ be given by</p>
 <span><span class="op">)</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   id time         y1         y2        y3</span></span>
-<span><span class="co">#&gt; 1  1  0.0 -0.3643096 -0.6026342 0.9065540</span></span>
-<span><span class="co">#&gt; 2  1  0.1 -0.3256180 -0.5022615 0.8677814</span></span>
-<span><span class="co">#&gt; 3  1  0.2 -0.2296496 -0.3203675 0.8569315</span></span>
-<span><span class="co">#&gt; 4  1  0.3 -0.2413114 -0.3622560 0.7848573</span></span>
-<span><span class="co">#&gt; 5  1  0.4 -0.3358543 -0.2430579 0.6294530</span></span>
-<span><span class="co">#&gt; 6  1  0.5 -0.2806468 -0.2063894 0.5806752</span></span>
+<span><span class="co">#&gt;   id time         y1          y2        y3</span></span>
+<span><span class="co">#&gt; 1  1  0.0  0.2993754 -1.31512925 1.5799184</span></span>
+<span><span class="co">#&gt; 2  1  0.1 -1.0023155  0.03359621 1.0254889</span></span>
+<span><span class="co">#&gt; 3  1  0.2  0.2704403 -0.32115025 1.3880666</span></span>
+<span><span class="co">#&gt; 4  1  0.3 -0.1433416 -0.75056366 1.2085179</span></span>
+<span><span class="co">#&gt; 5  1  0.4 -1.4919305 -0.26816762 0.2749754</span></span>
+<span><span class="co">#&gt; 6  1  0.5 -0.7640905  0.45476189 0.3812558</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-fit-ct-var-mx-error-1.png" width="3300"><img src="fig-vignettes-fit-ct-var-mx-error-2.png" width="3300"><img src="fig-vignettes-fit-ct-var-mx-error-3.png" width="3300"></p>
 </div>
@@ -385,37 +385,41 @@ individual
 <span>  observed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  id <span class="op">=</span> <span class="st">"id"</span>,</span>
 <span>  time <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>  theta_fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running CTVAR with 12 parameters</span></span>
+<span><span class="co">#&gt; Running CTVAR with 15 parameters</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Beginning initial fit attempt</span></span>
-<span><span class="co">#&gt; Running CTVAR with 12 parameters</span></span>
+<span><span class="co">#&gt; Running CTVAR with 15 parameters</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Lowest minimum so far:  -543716.980131128</span></span>
+<span><span class="co">#&gt;  Lowest minimum so far:  20938.7451915782</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Solution found</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Solution found!  Final fit=-543716.98 (started at -524291.52)  (1 attempt(s): 1 valid, 0 errors)</span></span>
+<span><span class="co">#&gt;  Solution found!  Final fit=20938.745 (started at 25088.788)  (1 attempt(s): 1 valid, 0 errors)</span></span>
 <span><span class="co">#&gt;  Start values from best fit:</span></span>
-<span><span class="co">#&gt; -0.336259079122471,0.770287067798403,-0.464190065239356,0.00205658765648727,-0.521492461088462,0.735878240731034,-0.0106374506388174,0.0129009602154161,-0.697095884475648,0.0994158716609205,0.100737065910388,0.10023245133394</span></span>
+<span><span class="co">#&gt; -0.434092846335603,0.731083054534586,-0.408948705507987,0.0277828630418771,-0.510542571057738,0.665259002972739,-0.0372740055486106,0.0358314559387023,-0.669863577496887,0.105612247224809,0.112017199749032,0.0922633953514766,0.196662438389066,0.186379501447245,0.203624352675804</span></span>
 <span><span class="va">fit</span></span>
 <span><span class="co">#&gt; Summary of CTVAR </span></span>
 <span><span class="co">#&gt;  </span></span>
 <span><span class="co">#&gt; free parameters:</span></span>
-<span><span class="co">#&gt;        name        matrix  row  col     Estimate    Std.Error A</span></span>
-<span><span class="co">#&gt; 1    phi_11   CTVAR_1.phi eta1 eta1 -0.336259079 0.0112876840  </span></span>
-<span><span class="co">#&gt; 2    phi_21   CTVAR_1.phi eta2 eta1  0.770287068 0.0112334809  </span></span>
-<span><span class="co">#&gt; 3    phi_31   CTVAR_1.phi eta3 eta1 -0.464190065 0.0111528376  </span></span>
-<span><span class="co">#&gt; 4    phi_12   CTVAR_1.phi eta1 eta2  0.002056588 0.0097320464  </span></span>
-<span><span class="co">#&gt; 5    phi_22   CTVAR_1.phi eta2 eta2 -0.521492461 0.0098184506  </span></span>
-<span><span class="co">#&gt; 6    phi_32   CTVAR_1.phi eta3 eta2  0.735878241 0.0097176408  </span></span>
-<span><span class="co">#&gt; 7    phi_13   CTVAR_1.phi eta1 eta3 -0.010637451 0.0089962429  </span></span>
-<span><span class="co">#&gt; 8    phi_23   CTVAR_1.phi eta2 eta3  0.012900960 0.0090682626  </span></span>
-<span><span class="co">#&gt; 9    phi_33   CTVAR_1.phi eta3 eta3 -0.697095884 0.0090833222  </span></span>
-<span><span class="co">#&gt; 10 sigma_11 CTVAR_1.sigma eta1 eta1  0.099415872 0.0004590553  </span></span>
-<span><span class="co">#&gt; 11 sigma_22 CTVAR_1.sigma eta2 eta2  0.100737066 0.0004614320  </span></span>
-<span><span class="co">#&gt; 12 sigma_33 CTVAR_1.sigma eta3 eta3  0.100232451 0.0004571693  </span></span>
+<span><span class="co">#&gt;        name        matrix  row  col    Estimate   Std.Error A</span></span>
+<span><span class="co">#&gt; 1    phi_11   CTVAR_1.phi eta1 eta1 -0.43409285 0.092674248  </span></span>
+<span><span class="co">#&gt; 2    phi_21   CTVAR_1.phi eta2 eta1  0.73108305 0.080617107  </span></span>
+<span><span class="co">#&gt; 3    phi_31   CTVAR_1.phi eta3 eta1 -0.40894871 0.073163039  </span></span>
+<span><span class="co">#&gt; 4    phi_12   CTVAR_1.phi eta1 eta2  0.02778286 0.066923811  </span></span>
+<span><span class="co">#&gt; 5    phi_22   CTVAR_1.phi eta2 eta2 -0.51054257 0.071676661  </span></span>
+<span><span class="co">#&gt; 6    phi_32   CTVAR_1.phi eta3 eta2  0.66525900 0.063093652  </span></span>
+<span><span class="co">#&gt; 7    phi_13   CTVAR_1.phi eta1 eta3 -0.03727401 0.058772785  </span></span>
+<span><span class="co">#&gt; 8    phi_23   CTVAR_1.phi eta2 eta3  0.03583146 0.062072649  </span></span>
+<span><span class="co">#&gt; 9    phi_33   CTVAR_1.phi eta3 eta3 -0.66986358 0.063636481  </span></span>
+<span><span class="co">#&gt; 10 sigma_11 CTVAR_1.sigma eta1 eta1  0.10561225 0.014307028  </span></span>
+<span><span class="co">#&gt; 11 sigma_22 CTVAR_1.sigma eta2 eta2  0.11201720 0.012739578  </span></span>
+<span><span class="co">#&gt; 12 sigma_33 CTVAR_1.sigma eta3 eta3  0.09226340 0.011809245  </span></span>
+<span><span class="co">#&gt; 13 theta_11 CTVAR_1.theta   y1   y1  0.19666244 0.004623033  </span></span>
+<span><span class="co">#&gt; 14 theta_22 CTVAR_1.theta   y2   y2  0.18637950 0.004372056  </span></span>
+<span><span class="co">#&gt; 15 theta_33 CTVAR_1.theta   y3   y3  0.20362435 0.004709026  </span></span>
 <span><span class="co">#&gt;                  lbound               ubound</span></span>
 <span><span class="co">#&gt; 1                       2.2250738585072e-308</span></span>
 <span><span class="co">#&gt; 2                                           </span></span>
@@ -429,25 +433,28 @@ individual
 <span><span class="co">#&gt; 10 2.2250738585072e-308                     </span></span>
 <span><span class="co">#&gt; 11 2.2250738585072e-308                     </span></span>
 <span><span class="co">#&gt; 12 2.2250738585072e-308                     </span></span>
+<span><span class="co">#&gt; 13 2.2250738585072e-308                     </span></span>
+<span><span class="co">#&gt; 14 2.2250738585072e-308                     </span></span>
+<span><span class="co">#&gt; 15 2.2250738585072e-308                     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Model Statistics: </span></span>
 <span><span class="co">#&gt;                |  Parameters  |  Degrees of Freedom  |  Fit (-2lnL units)</span></span>
-<span><span class="co">#&gt;        Model:             12                 299988               -543717</span></span>
+<span><span class="co">#&gt;        Model:             15                  14985              20938.75</span></span>
 <span><span class="co">#&gt;    Saturated:             NA                     NA                    NA</span></span>
 <span><span class="co">#&gt; Independence:             NA                     NA                    NA</span></span>
-<span><span class="co">#&gt; Number of observations/statistics: 1e+05/3e+05</span></span>
+<span><span class="co">#&gt; Number of observations/statistics: 5000/15000</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Information Criteria: </span></span>
 <span><span class="co">#&gt;       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted</span></span>
-<span><span class="co">#&gt; AIC:       -1143693              -543693.0                  -543693</span></span>
-<span><span class="co">#&gt; BIC:       -3997456              -543578.8                  -543617</span></span>
+<span><span class="co">#&gt; AIC:      -9031.255               20968.75                 20968.84</span></span>
+<span><span class="co">#&gt; BIC:    -106691.395               21066.50                 21018.84</span></span>
 <span><span class="co">#&gt; CFI: NA </span></span>
 <span><span class="co">#&gt; TLI: 1   (also known as NNFI) </span></span>
 <span><span class="co">#&gt; RMSEA:  0  [95% CI (NA, NA)]</span></span>
 <span><span class="co">#&gt; Prob(RMSEA &lt;= 0.05): NA</span></span>
 <span><span class="co">#&gt; To get additional fit indices, see help(mxRefModels)</span></span>
-<span><span class="co">#&gt; timestamp: 2024-08-08 07:04:42 </span></span>
-<span><span class="co">#&gt; Wall clock time: 149.2614 secs </span></span>
+<span><span class="co">#&gt; timestamp: 2024-08-11 22:29:06 </span></span>
+<span><span class="co">#&gt; Wall clock time: 11.63689 secs </span></span>
 <span><span class="co">#&gt; optimizer:  SLSQP </span></span>
 <span><span class="co">#&gt; OpenMx version number: 2.21.11 </span></span>
 <span><span class="co">#&gt; Need help?  See help(mxSummary)</span></span></code></pre>
