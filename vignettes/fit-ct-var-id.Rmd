@@ -1,7 +1,7 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model By ID"
 author: Ivan Jacob Agaloos Pesigan
-date: "2024-08-08"
+date: "2024-08-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -129,7 +129,7 @@ which represents random fluctuations.
 
 ### Notation
 
-Let $t = 1000$ be the number of time points and $n = 100$ be the number of individuals.
+Let $t = 500$ be the number of time points and $n = 10$ be the number of individuals.
 
 Let the measurement model intecept vector $\boldsymbol{\nu}$ be given by
 
@@ -166,9 +166,9 @@ Let the measurement error covariance matrix $\boldsymbol{\Theta}$ be given by
 =
 \left(
 \begin{array}{ccc}
-  0 & 0 & 0 \\
-  0 & 0 & 0 \\
-  0 & 0 & 0 \\
+  0.2 & 0 & 0 \\
+  0 & 0.2 & 0 \\
+  0 & 0 & 0.2 \\
 \end{array}
 \right) .
 \end{equation}
@@ -272,9 +272,9 @@ Let $\Delta t = 0.1$.
 
 ``` r
 n
-#> [1] 100
+#> [1] 10
 time
-#> [1] 1000
+#> [1] 500
 delta_t
 #> [1] 0.1
 mu0
@@ -322,15 +322,15 @@ lambda
 #> [3,]    0    0    1
 theta
 #>      [,1] [,2] [,3]
-#> [1,]    0    0    0
-#> [2,]    0    0    0
-#> [3,]    0    0    0
+#> [1,]  0.2  0.0  0.0
+#> [2,]  0.0  0.2  0.0
+#> [3,]  0.0  0.0  0.2
 theta_l
 #> [[1]]
-#>      [,1] [,2] [,3]
-#> [1,]    0    0    0
-#> [2,]    0    0    0
-#> [3,]    0    0    0
+#>           [,1]      [,2]      [,3]
+#> [1,] 0.4472136 0.0000000 0.0000000
+#> [2,] 0.0000000 0.4472136 0.0000000
+#> [3,] 0.0000000 0.0000000 0.4472136
 ```
 
 ### Visualizing the Dynamics Without Process Noise (n = 5 with Different Initial Condition)
@@ -357,13 +357,13 @@ sim <- SimSSMOUIVary(
 )
 data <- as.data.frame(sim)
 head(data)
-#>   id time        y1         y2        y3
-#> 1  1  0.0 -1.407144 -0.3703871 -1.005882
-#> 2  1  0.1 -1.372881 -0.4764856 -1.058330
-#> 3  1  0.2 -1.290353 -0.5443476 -1.018862
-#> 4  1  0.3 -1.239194 -0.7836783 -1.072401
-#> 5  1  0.4 -1.110661 -0.9018310 -1.060215
-#> 6  1  0.5 -1.198872 -0.8450478 -1.084714
+#>   id time         y1         y2         y3
+#> 1  1  0.0 -0.9066322  0.2077655 -0.1532395
+#> 2  1  0.1 -2.0187881  0.1100828  1.5700524
+#> 3  1  0.2 -1.9509792  0.7388884  0.6062416
+#> 4  1  0.3 -0.7648885 -0.3710951  0.6992641
+#> 5  1  0.4 -1.9989218 -1.4027964 -0.1971148
+#> 6  1  0.5 -1.7412161 -0.2356327 -0.4460133
 plot(sim)
 ```
 
@@ -384,15 +384,18 @@ fit <- FitCTVARIDMx(
   observed = paste0("y", seq_len(k)),
   id = "id",
   time = "time",
+  theta_fixed = FALSE,
   ncores = parallel::detectCores()
 )
 fit
 #> 
 #> Means of the estimated paramaters per individual.
 #>       phi_11       phi_21       phi_31       phi_12       phi_22       phi_32 
-#> -0.405740018  0.777807791 -0.457255643  0.000949408 -0.549470908  0.724583368 
+#> -0.329091189  0.851689092 -0.507551362  0.015917202 -0.509584686  1.032802799 
 #>       phi_13       phi_23       phi_33     sigma_11     sigma_22     sigma_33 
-#>  0.003763113 -0.013551647 -0.735826877  0.099096944  0.099638843  0.100193412
+#>  0.007716078  0.033385190 -1.017327464  0.100409860  0.101391404  0.121158245 
+#>     theta_11     theta_22     theta_33 
+#>  0.200496451  0.193508168  0.197870476
 ```
 
 ## References

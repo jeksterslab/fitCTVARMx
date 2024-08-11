@@ -32,8 +32,8 @@ knitr::opts_chunk$set(
 ```{r}
 #| echo = FALSE
 set.seed(42)
-n <- 100
-time <- 1000
+n <- 10
+time <- 500
 delta_t <- 0.10
 k <- p <- 3
 iden <- diag(k)
@@ -65,8 +65,8 @@ sigma <- 0.1 * iden
 sigma_l <- t(chol(sigma))
 nu <- null_vec
 lambda <- iden
-theta <- null_mat
-theta_l <- null_mat
+theta <- 0.2 * iden
+theta_l <- t(chol(theta))
 ```
 
 ## Model
@@ -383,6 +383,7 @@ fit <- FitCTVARMx(
   observed = paste0("y", seq_len(k)),
   id = "id",
   time = "time",
+  theta_fixed = FALSE,
   ncores = parallel::detectCores()
 )
 fit

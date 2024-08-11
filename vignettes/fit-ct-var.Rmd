@@ -1,7 +1,7 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2024-08-08"
+date: "2024-08-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -127,7 +127,7 @@ which represents random fluctuations.
 
 ### Notation
 
-Let $t = 1000$ be the number of time points and $n = 100$ be the number of individuals.
+Let $t = 500$ be the number of time points and $n = 10$ be the number of individuals.
 
 Let the measurement model intecept vector $\boldsymbol{\nu}$ be given by
 
@@ -164,9 +164,9 @@ Let the measurement error covariance matrix $\boldsymbol{\Theta}$ be given by
 =
 \left(
 \begin{array}{ccc}
-  0 & 0 & 0 \\
-  0 & 0 & 0 \\
-  0 & 0 & 0 \\
+  0.2 & 0 & 0 \\
+  0 & 0.2 & 0 \\
+  0 & 0 & 0.2 \\
 \end{array}
 \right) .
 \end{equation}
@@ -252,9 +252,9 @@ Let $\Delta t = 0.1$.
 
 ``` r
 n
-#> [1] 100
+#> [1] 10
 time
-#> [1] 1000
+#> [1] 500
 delta_t
 #> [1] 0.1
 mu0
@@ -285,9 +285,9 @@ lambda
 #> [3,]    0    0    1
 theta
 #>      [,1] [,2] [,3]
-#> [1,]    0    0    0
-#> [2,]    0    0    0
-#> [3,]    0    0    0
+#> [1,]  0.2  0.0  0.0
+#> [2,]  0.0  0.2  0.0
+#> [3,]  0.0  0.0  0.2
 ```
 
 ### Visualizing the Dynamics Without Measurement Error and Process Noise (n = 5 with Different Initial Condition)
@@ -315,13 +315,13 @@ sim <- SimSSMOUFixed(
 )
 data <- as.data.frame(sim)
 head(data)
-#>   id time         y1         y2        y3
-#> 1  1  0.0 -0.3643096 -0.6026342 0.9065540
-#> 2  1  0.1 -0.3256180 -0.5022615 0.8677814
-#> 3  1  0.2 -0.2296496 -0.3203675 0.8569315
-#> 4  1  0.3 -0.2413114 -0.3622560 0.7848573
-#> 5  1  0.4 -0.3358543 -0.2430579 0.6294530
-#> 6  1  0.5 -0.2806468 -0.2063894 0.5806752
+#>   id time         y1          y2        y3
+#> 1  1  0.0  0.2993754 -1.31512925 1.5799184
+#> 2  1  0.1 -1.0023155  0.03359621 1.0254889
+#> 3  1  0.2  0.2704403 -0.32115025 1.3880666
+#> 4  1  0.3 -0.1433416 -0.75056366 1.2085179
+#> 5  1  0.4 -1.4919305 -0.26816762 0.2749754
+#> 6  1  0.5 -0.7640905  0.45476189 0.3812558
 plot(sim)
 ```
 
@@ -342,14 +342,15 @@ fit <- FitCTVARMx(
   observed = paste0("y", seq_len(k)),
   id = "id",
   time = "time",
+  theta_fixed = FALSE,
   ncores = parallel::detectCores()
 )
-#> Running CTVAR with 12 parameters
+#> Running CTVAR with 15 parameters
 #> 
 #> Beginning initial fit attempt
-#> Running CTVAR with 12 parameters
+#> Running CTVAR with 15 parameters
 #> 
-#>  Lowest minimum so far:  -543716.980131128
+#>  Lowest minimum so far:  20938.7451915782
 #> 
 #> Solution found
 ```
@@ -358,26 +359,29 @@ fit <- FitCTVARMx(
 
 ```
 #> 
-#>  Solution found!  Final fit=-543716.98 (started at -524291.52)  (1 attempt(s): 1 valid, 0 errors)
+#>  Solution found!  Final fit=20938.745 (started at 25088.788)  (1 attempt(s): 1 valid, 0 errors)
 #>  Start values from best fit:
-#> -0.336259079122471,0.770287067798403,-0.464190065239356,0.00205658765648727,-0.521492461088462,0.735878240731034,-0.0106374506388174,0.0129009602154161,-0.697095884475648,0.0994158716609205,0.100737065910388,0.10023245133394
+#> -0.434092846335603,0.731083054534586,-0.408948705507987,0.0277828630418771,-0.510542571057738,0.665259002972739,-0.0372740055486106,0.0358314559387023,-0.669863577496887,0.105612247224809,0.112017199749032,0.0922633953514766,0.196662438389066,0.186379501447245,0.203624352675804
 fit
 #> Summary of CTVAR 
 #>  
 #> free parameters:
-#>        name        matrix  row  col     Estimate    Std.Error A
-#> 1    phi_11   CTVAR_1.phi eta1 eta1 -0.336259079 0.0112876840  
-#> 2    phi_21   CTVAR_1.phi eta2 eta1  0.770287068 0.0112334809  
-#> 3    phi_31   CTVAR_1.phi eta3 eta1 -0.464190065 0.0111528376  
-#> 4    phi_12   CTVAR_1.phi eta1 eta2  0.002056588 0.0097320464  
-#> 5    phi_22   CTVAR_1.phi eta2 eta2 -0.521492461 0.0098184506  
-#> 6    phi_32   CTVAR_1.phi eta3 eta2  0.735878241 0.0097176408  
-#> 7    phi_13   CTVAR_1.phi eta1 eta3 -0.010637451 0.0089962429  
-#> 8    phi_23   CTVAR_1.phi eta2 eta3  0.012900960 0.0090682626  
-#> 9    phi_33   CTVAR_1.phi eta3 eta3 -0.697095884 0.0090833222  
-#> 10 sigma_11 CTVAR_1.sigma eta1 eta1  0.099415872 0.0004590553  
-#> 11 sigma_22 CTVAR_1.sigma eta2 eta2  0.100737066 0.0004614320  
-#> 12 sigma_33 CTVAR_1.sigma eta3 eta3  0.100232451 0.0004571693  
+#>        name        matrix  row  col    Estimate   Std.Error A
+#> 1    phi_11   CTVAR_1.phi eta1 eta1 -0.43409285 0.092674248  
+#> 2    phi_21   CTVAR_1.phi eta2 eta1  0.73108305 0.080617107  
+#> 3    phi_31   CTVAR_1.phi eta3 eta1 -0.40894871 0.073163039  
+#> 4    phi_12   CTVAR_1.phi eta1 eta2  0.02778286 0.066923811  
+#> 5    phi_22   CTVAR_1.phi eta2 eta2 -0.51054257 0.071676661  
+#> 6    phi_32   CTVAR_1.phi eta3 eta2  0.66525900 0.063093652  
+#> 7    phi_13   CTVAR_1.phi eta1 eta3 -0.03727401 0.058772785  
+#> 8    phi_23   CTVAR_1.phi eta2 eta3  0.03583146 0.062072649  
+#> 9    phi_33   CTVAR_1.phi eta3 eta3 -0.66986358 0.063636481  
+#> 10 sigma_11 CTVAR_1.sigma eta1 eta1  0.10561225 0.014307028  
+#> 11 sigma_22 CTVAR_1.sigma eta2 eta2  0.11201720 0.012739578  
+#> 12 sigma_33 CTVAR_1.sigma eta3 eta3  0.09226340 0.011809245  
+#> 13 theta_11 CTVAR_1.theta   y1   y1  0.19666244 0.004623033  
+#> 14 theta_22 CTVAR_1.theta   y2   y2  0.18637950 0.004372056  
+#> 15 theta_33 CTVAR_1.theta   y3   y3  0.20362435 0.004709026  
 #>                  lbound               ubound
 #> 1                       2.2250738585072e-308
 #> 2                                           
@@ -391,25 +395,28 @@ fit
 #> 10 2.2250738585072e-308                     
 #> 11 2.2250738585072e-308                     
 #> 12 2.2250738585072e-308                     
+#> 13 2.2250738585072e-308                     
+#> 14 2.2250738585072e-308                     
+#> 15 2.2250738585072e-308                     
 #> 
 #> Model Statistics: 
 #>                |  Parameters  |  Degrees of Freedom  |  Fit (-2lnL units)
-#>        Model:             12                 299988               -543717
+#>        Model:             15                  14985              20938.75
 #>    Saturated:             NA                     NA                    NA
 #> Independence:             NA                     NA                    NA
-#> Number of observations/statistics: 1e+05/3e+05
+#> Number of observations/statistics: 5000/15000
 #> 
 #> Information Criteria: 
 #>       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted
-#> AIC:       -1143693              -543693.0                  -543693
-#> BIC:       -3997456              -543578.8                  -543617
+#> AIC:      -9031.255               20968.75                 20968.84
+#> BIC:    -106691.395               21066.50                 21018.84
 #> CFI: NA 
 #> TLI: 1   (also known as NNFI) 
 #> RMSEA:  0  [95% CI (NA, NA)]
 #> Prob(RMSEA <= 0.05): NA
 #> To get additional fit indices, see help(mxRefModels)
-#> timestamp: 2024-08-08 07:04:42 
-#> Wall clock time: 149.2614 secs 
+#> timestamp: 2024-08-11 22:29:06 
+#> Wall clock time: 11.63689 secs 
 #> optimizer:  SLSQP 
 #> OpenMx version number: 2.21.11 
 #> Need help?  See help(mxSummary)
